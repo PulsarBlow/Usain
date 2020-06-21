@@ -1,0 +1,11 @@
+<Project>
+
+  <PropertyGroup Label="Package Versions">
+    <MediatRVersion>8.0.0</MediatRVersion>
+    <CoverletCollectorVersion>1.2.1</CoverletCollectorVersion>
+    <XUnitVersion>2.4.0</XUnitVersion>
+    <XUnitRunnerVersion>2.4.0</XUnitRunnerVersion>
+    <TestSdkVersion>16.5.0</TestSdkVersion>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+<Project>
+
+  <PropertyGroup>
+    <Authors>PulsarBlow</Authors>
+    <Company>pulsarblow.dev</Company>
+    <Copyright>© 2020 Alain Mereaux</Copyright>
+    <PackageLicenseFile>LICENCE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/PulsarBlow/Usain/</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/PulsarBlow/Usain/</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../assets/icons/icon-128x128.png" Pack="true" PackagePath="icon.png"/>
+    <None Include="../../LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+</Project>

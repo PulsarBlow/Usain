@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../props/common.props" />
+  <Import Project="../../props/package.props" />
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <Title>Usain Core</Title>
+    <PackageId>Usain.Core</PackageId>
+    <PackageDescription>Core library for Usain</PackageDescription>
+    <PackageTags>slack events-api .net-core dotnetcore</PackageTags>
+    <PackageReleaseNotes>v1.0-alpha.1: Initial version</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+</Project>

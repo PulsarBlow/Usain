@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <UserSecretsId>b9061b80-8c1f-4585-a5d2-547378d895ae</UserSecretsId>
+  </PropertyGroup>
+  <Import Project="../../../props/common.props" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Usain.EventListener\Usain.EventListener.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Slack.NetStandard" Version="2.1.0" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../props/common.props" />
+  <Import Project="../../props/package.props" />
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <Title>Usain Slack</Title>
+    <PackageId>Usain.Slack</PackageId>
+    <PackageDescription>Slack abstraction for Usain</PackageDescription>
+    <PackageTags>slack events-api .net-core dotnetcore</PackageTags>
+    <PackageReleaseNotes>v1.0-alpha.1: Initial version</PackageReleaseNotes>
+  </PropertyGroup>
+
+</Project>
