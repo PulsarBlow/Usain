@@ -7,6 +7,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/PulsarBlow/Usain/</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>slack events-api .net-core dotnetcore</PackageTags>
     <RepositoryUrl>https://github.com/PulsarBlow/Usain/</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <IncludeSymbols>true</IncludeSymbols>

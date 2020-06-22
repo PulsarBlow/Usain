@@ -8,7 +8,6 @@
     <Title>Usain Core</Title>
     <PackageId>Usain.Core</PackageId>
     <PackageDescription>Core library for Usain</PackageDescription>
-    <PackageTags>slack events-api .net-core dotnetcore</PackageTags>
     <PackageReleaseNotes>v0.0.0: Initial version</PackageReleaseNotes>
   </PropertyGroup>
 

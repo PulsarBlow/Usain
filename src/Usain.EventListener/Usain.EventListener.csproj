@@ -7,8 +7,7 @@
     <Nullable>enable</Nullable>
     <Title>Usain EventListener</Title>
     <PackageId>Usain.EventListener</PackageId>
-    <PackageDescription>A simple, fast and scalable Slack Event listener</PackageDescription>
-    <PackageTags>slack events-api .net-core dotnetcore</PackageTags>
+    <PackageDescription>Slack events listener server for Usain</PackageDescription>
     <PackageReleaseNotes>v0.0.0: Initial version</PackageReleaseNotes>
   </PropertyGroup>
 
