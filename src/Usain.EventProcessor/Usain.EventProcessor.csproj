@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../props/common.props" />
+  <Import Project="../../props/package.props" />
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <Title>Usain EventProcessor</Title>
+    <PackageId>Usain.EventProcessor</PackageId>
+    <PackageDescription>Slack events processor for Usain</PackageDescription>
+    <PackageReleaseNotes>v0.0.0: Initial version</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Usain.Core\Usain.Core.csproj" />
+    <ProjectReference Include="..\Usain.Slack\Usain.Slack.csproj" />
+  </ItemGroup>
+
+</Project>

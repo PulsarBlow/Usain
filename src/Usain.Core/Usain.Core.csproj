@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../props/common.props" />
+  <Import Project="../../props/package.props" />
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <Title>Usain Core</Title>
+    <PackageId>Usain.Core</PackageId>
+    <PackageDescription>Core library for Usain</PackageDescription>
+    <PackageReleaseNotes>v0.0.0: Initial version</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+</Project>

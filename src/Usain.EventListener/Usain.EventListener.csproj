@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../props/common.props" />
+  <Import Project="../../props/package.props" />
+
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <Title>Usain EventListener</Title>
+    <PackageId>Usain.EventListener</PackageId>
+    <PackageDescription>Slack events listener server for Usain</PackageDescription>
+    <PackageReleaseNotes>v0.0.0: Initial version</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="$(MediatRVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Usain.Core\Usain.Core.csproj" />
+    <ProjectReference Include="..\Usain.EventProcessor\Usain.EventProcessor.csproj" />
+    <ProjectReference Include="..\Usain.Slack\Usain.Slack.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
