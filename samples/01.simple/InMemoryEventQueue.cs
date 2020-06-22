@@ -1,4 +1,4 @@
-namespace SingleWebHost
+namespace Usain.Samples.Simple
 {
     using System.Collections.Concurrent;
     using System.Diagnostics.CodeAnalysis;

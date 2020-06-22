@@ -1,4 +1,4 @@
-namespace SingleWebHost
+namespace Usain.Samples.Simple
 {
     public class SlackOptions
     {

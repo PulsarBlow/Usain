@@ -94,8 +94,8 @@ To be completed.
 
 Meanwhile, jump to the sample sources:
 
-- [Single Webhost](./samples/01.single_webhost): demonstrates how to use both the Event Listener and the Event Processor infrastructure components inside a single webhost (Asp.Net Core). It uses an in-memory shared event queue. Not as scalable as the Tiered hosts sample but easier to start with.
-- Tiered hosts: demonstrates how to host the Event Listener and the Event Process separately, allowing better horizontal scalability.
+- [01.Simple]: demonstrates how to use Usain's Event Listener and Event Processor inside a unique web app. It uses an in-memory shared event queue. For demo purpose only.
+- [02.Advanced.AzureQueue]: demonstrates how to use Usain's Event Listener and the Event Process in distinct hosting processes. It uses an [Azure Queue Storage], providing a better scalability and good fault tolerance.
 
 
 # Attributions
@@ -107,5 +107,8 @@ Usain icons made by [Pixel perfect] from [FlatIcon]
 [LoggerMessage]: <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/loggermessage?view=aspnetcore-3.1>
 [Bolt JS]: <https://slack.dev/bolt-js/tutorial/getting-started>
 [Bolt Java]: <https://slack.dev/java-slack-sdk/guides/getting-started-with-bolt>
+[01.Simple]: <./samples/01.simple>
+[02.Advanced.AzureQueue]: <./samples/02.advanced.azurequeue>
+[Azure Queue Storage]: <https://azure.microsoft.com/en-us/services/storage/queues/>
 [FlatIcon]: <http://www.flaticon.com/>
 [Pixel perfect]: <https://www.flaticon.com/authors/pixel-perfect>

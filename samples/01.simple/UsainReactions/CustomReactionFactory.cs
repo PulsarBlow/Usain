@@ -1,4 +1,4 @@
-namespace SingleWebHost.UsainReactions
+namespace Usain.Samples.Simple.UsainReactions
 {
     using global::Slack.NetStandard;
     using Microsoft.Extensions.Logging;

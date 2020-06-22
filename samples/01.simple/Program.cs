@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace SingleWebHost
+namespace Usain.Samples.Simple
 {
     public class Program
     {

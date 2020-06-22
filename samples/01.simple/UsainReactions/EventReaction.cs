@@ -1,4 +1,4 @@
-namespace SingleWebHost.UsainReactions
+namespace Usain.Samples.Simple.UsainReactions
 {
     using System;
     using System.Collections.Generic;
