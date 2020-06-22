@@ -9,7 +9,7 @@
     <PackageId>Usain.EventProcessor</PackageId>
     <PackageDescription>The Slack event processor for Usain</PackageDescription>
     <PackageTags>slack events-api .net-core dotnetcore</PackageTags>
-    <PackageReleaseNotes>v1.0-alpha.1: Initial version</PackageReleaseNotes>
+    <PackageReleaseNotes>v0.0.0: Initial version</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
