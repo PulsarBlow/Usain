@@ -3,8 +3,8 @@ namespace Usain.Samples.Simple
     using System.Collections.Concurrent;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
-    using Usain.Core.Infrastructure;
-    using Usain.Slack.Models;
+    using Core.Infrastructure;
+    using Slack.Models;
 
     public class InMemoryEventQueue : IEventQueue<EventWrapper>
     {

@@ -3,10 +3,9 @@
 namespace Microsoft.Extensions.DependencyInjection
 {
     using System;
-    using MediatR;
-    using Microsoft.AspNetCore.Http;
-    using DependencyInjection;
+    using AspNetCore.Http;
     using Extensions;
+    using MediatR;
     using Options;
     using Usain.Core.Infrastructure;
     using Usain.EventListener;

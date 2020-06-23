@@ -2,8 +2,8 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints
 {
     using System.Threading;
     using System.Threading.Tasks;
-    using Endpoints.Results;
     using Microsoft.AspNetCore.Http;
+    using Results;
 
     /// <summary>
     /// Endpoint handler

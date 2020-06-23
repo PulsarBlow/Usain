@@ -2,6 +2,8 @@ namespace Usain.Samples.Simple
 {
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using Core.Infrastructure;
+    using EventProcessor.EventReactions;
     using global::Slack.NetStandard;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -9,9 +11,8 @@ namespace Usain.Samples.Simple
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Options;
-    using Usain.Core.Infrastructure;
-    using Usain.EventProcessor.EventReactions;
-    using Usain.Slack.Models;
+    using Slack.Models;
+    using Slack.Models.CallbackEvents;
     using UsainReactions;
 
     public class Startup
@@ -62,8 +63,11 @@ namespace Usain.Samples.Simple
             services
                 .AddTransient(
                     typeof(IEventReactionFactory<>),
-                    typeof(
-                        CustomReactionFactory<>));
+                    typeof(UsainReactions.DefaultEventReactionFactory<>));
+            services
+                .AddTransient(
+                    typeof(IEventReactionFactory<AppMentionEvent>),
+                    typeof(AppMentionEventReactionFactory));
         }
 
         public void Configure(
