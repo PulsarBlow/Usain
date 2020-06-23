@@ -2,7 +2,7 @@ namespace Usain.Slack.Models.CallbackEvents
 {
     using System.Text.Json.Serialization;
 
-    public class AppMentionEvent : CallbackEvent
+    public class AppMentionEvent : CallbackEvent, IChannelEvent
     {
         public const string EventType = "app_mention";
 

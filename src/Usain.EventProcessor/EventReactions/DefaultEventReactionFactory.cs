@@ -1,5 +1,6 @@
 namespace Usain.EventProcessor.EventReactions
 {
+    using System;
     using Microsoft.Extensions.Logging;
     using Slack.Models;
 
@@ -16,7 +17,7 @@ namespace Usain.EventProcessor.EventReactions
         public IEventReaction<TCallbackEvent> Create(
             EventWrapper eventWrapper)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

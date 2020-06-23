@@ -4,7 +4,6 @@ namespace Microsoft.Extensions.DependencyInjection
     using System;
     using System.Diagnostics;
     using AspNetCore.Builder;
-    using DependencyInjection;
     using Logging;
     using Options;
     using Usain.EventListener.Configuration;
@@ -55,7 +54,7 @@ namespace Microsoft.Extensions.DependencyInjection
             if (options == null)
             {
                 throw new InvalidOperationException(
-                    $"Unable to read options");
+                    "Unable to read options");
             }
 
             if (options.IsRequestAuthenticationEnabled

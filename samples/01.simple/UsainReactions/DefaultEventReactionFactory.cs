@@ -1,18 +1,18 @@
 namespace Usain.Samples.Simple.UsainReactions
 {
+    using EventProcessor.EventReactions;
     using global::Slack.NetStandard;
     using Microsoft.Extensions.Logging;
-    using Usain.EventProcessor.EventReactions;
-    using Usain.Slack.Models;
-    using Usain.Slack.Models.CallbackEvents;
+    using Slack.Models;
+    using Slack.Models.CallbackEvents;
 
-    public class CustomReactionFactory<TEvent> : IEventReactionFactory<TEvent>
+    public class DefaultEventReactionFactory<TEvent> : IEventReactionFactory<TEvent>
         where TEvent : CallbackEvent
     {
         private readonly ILoggerFactory _loggerFactory;
         private readonly ISlackApiClient _slackApiClient;
 
-        public CustomReactionFactory(
+        public DefaultEventReactionFactory(
             ILoggerFactory loggerFactory,
             ISlackApiClient slackApiClient)
         {
