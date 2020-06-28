@@ -44,5 +44,16 @@ namespace Usain.Slack.Models
 
         [JsonIgnore]
         public Guid InternalId { get; set; } = Guid.NewGuid();
+
+        public EventWrapper()
+            : this(EventType)
+        {
+        }
+
+        protected EventWrapper(
+            string eventType)
+        {
+            Type = eventType;
+        }
     }
 }

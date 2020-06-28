@@ -6,8 +6,9 @@ namespace Usain.Samples.Simple.UsainReactions
     using Slack.Models;
     using Slack.Models.CallbackEvents;
 
-    public class DefaultEventReactionFactory<TEvent> : IEventReactionFactory<TEvent>
-        where TEvent : CallbackEvent
+    public class DefaultEventReactionFactory<TEvent>
+        : IEventReactionFactory<TEvent>
+        where TEvent : CallbackEvent, new()
     {
         private readonly ILoggerFactory _loggerFactory;
         private readonly ISlackApiClient _slackApiClient;

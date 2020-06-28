@@ -2,6 +2,7 @@ namespace Usain.Samples.Simple
 {
     using System.Collections.Concurrent;
     using System.Diagnostics.CodeAnalysis;
+    using System.Threading;
     using System.Threading.Tasks;
     using Core.Infrastructure;
     using Slack.Models;
@@ -12,14 +13,16 @@ namespace Usain.Samples.Simple
             new ConcurrentQueue<EventWrapper>();
 
         public Task EnqueueAsync(
-            EventWrapper item)
+            EventWrapper item,
+            CancellationToken cancellationToken = default)
         {
             _queue.Enqueue(item);
             return Task.CompletedTask;
         }
 
         public Task<bool> TryDequeueAsync(
-            [NotNullWhen(true)] out EventWrapper item)
+            [NotNullWhen(true)] out EventWrapper item,
+            CancellationToken cancellationToken = default)
         {
             return Task.FromResult(_queue.TryDequeue(out item));
         }

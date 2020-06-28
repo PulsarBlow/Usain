@@ -52,6 +52,8 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             builder.Services
                 .AddTransient<IEventReactionGenerator, EventReactionGenerator>();
+            builder.Services
+                .AddTransient<IEventQueueProcessor, EventQueueProcessor>();
             builder.Services.AddHostedService<EventProcessorService>();
             return builder;
         }

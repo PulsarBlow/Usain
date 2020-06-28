@@ -35,7 +35,7 @@ namespace Usain.EventListener.Commands.IngestEvent
             }
 
             var @event = command.Event;
-            await _eventQueue.EnqueueAsync(@event);
+            await _eventQueue.EnqueueAsync(@event, cancellationToken);
             _logger.LogCommandHandled(command.ToString());
 
             return new IngestEventCommandResult(@event.InternalId);

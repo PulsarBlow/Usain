@@ -3,7 +3,7 @@ namespace Usain.EventProcessor.EventReactions
     using System;
     using Microsoft.Extensions.Logging;
 
-    public static class LoggerMessageExtensions
+    internal static class LoggerMessageExtensions
     {
         private static readonly Action<ILogger, string, Exception?> NoReaction =
             LoggerMessage.Define<string>(
