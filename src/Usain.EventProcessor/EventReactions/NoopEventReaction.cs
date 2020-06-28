@@ -3,18 +3,26 @@ namespace Usain.EventProcessor.EventReactions
     using System.Threading.Tasks;
     using Microsoft.Extensions.Logging;
     using Slack.Models;
+    using Slack.Models.CallbackEvents;
 
-    public class NoopEventReaction : IEventReaction
+    internal class NoopEventReaction<TCallbackEvent>
+        : IEventReaction<
+            TCallbackEvent>
+        where TCallbackEvent : CallbackEvent, new()
     {
         private readonly ILogger _logger;
         private readonly EventWrapper _eventWrapper;
 
+        public TCallbackEvent Event { get; }
+
         public NoopEventReaction(
-            ILogger<NoopEventReaction> logger,
+            ILogger<NoopEventReaction<TCallbackEvent>> logger,
             EventWrapper eventWrapper)
         {
             _logger = logger;
             _eventWrapper = eventWrapper;
+            Event = _eventWrapper.Event as TCallbackEvent
+                ?? new TCallbackEvent();
         }
 
         public Task ReactAsync()

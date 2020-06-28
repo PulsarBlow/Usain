@@ -1,5 +1,6 @@
 namespace Usain.EventProcessor.Configuration
 {
+    using System;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Options;
 
@@ -7,8 +8,8 @@ namespace Usain.EventProcessor.Configuration
         : IConfigureOptions<EventProcessorOptions>
     {
         private readonly IConfiguration? _configuration;
+        internal const string OptionsSectionKeyName = "UsainEventProcessor";
 
-        public const string OptionsSectionKeyName = "UsainEventProcessor";
         public int CheckUpdateTimeMs { get; set; } = 1000;
 
         public EventProcessorOptions() { }
@@ -16,7 +17,8 @@ namespace Usain.EventProcessor.Configuration
         public EventProcessorOptions(
             IConfiguration configuration)
         {
-            _configuration = configuration;
+            _configuration = configuration
+                ?? throw new ArgumentNullException(nameof(configuration));
         }
 
         public void Configure(

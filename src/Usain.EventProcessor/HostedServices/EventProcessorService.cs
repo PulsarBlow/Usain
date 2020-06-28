@@ -4,29 +4,24 @@ namespace Usain.EventProcessor.HostedServices
     using System.Threading;
     using System.Threading.Tasks;
     using Configuration;
-    using Core.Infrastructure;
-    using EventReactions;
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
-    using Slack.Models;
 
     internal class EventProcessorService : BackgroundService
     {
         private readonly ILogger _logger;
-        private readonly IEventQueue<EventWrapper> _eventQueue;
+        private readonly IEventQueueProcessor _queueProcessor;
         private readonly EventProcessorOptions _options;
-        private readonly IEventReactionGenerator _eventReactionGenerator;
 
         public EventProcessorService(
             ILogger<EventProcessorService> logger,
-            IEventQueue<EventWrapper> eventQueue,
-            IOptions<EventProcessorOptions> options,
-            IEventReactionGenerator eventReactionGenerator)
+            IEventQueueProcessor queueProcessor,
+            IOptions<EventProcessorOptions> options)
         {
-            _logger = logger;
-            _eventQueue = eventQueue;
-            _eventReactionGenerator = eventReactionGenerator;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _queueProcessor = queueProcessor
+                ?? throw new ArgumentNullException(nameof(queueProcessor));
             _options = options?.Value
                 ?? throw new ArgumentNullException(nameof(options));
         }
@@ -44,34 +39,16 @@ namespace Usain.EventProcessor.HostedServices
                 try
                 {
                     _logger.LogServiceIsDoingBackgroundWork();
-                    if (await _eventQueue.TryDequeueAsync(out var @event))
-                    {
-                        _logger.LogServiceHasDequeuedAnEvent(
-                            @event?.Type ?? string.Empty);
-                        await DoReactAsync(@event);
-                    }
-
+                    await _queueProcessor.ProcessQueueAsync(stoppingToken);
                     await Task.Delay(
                         _options.CheckUpdateTimeMs,
                         stoppingToken);
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogCritical(ex,"Background work failed");
+                    _logger.LogBackgroundWorkHasFailed(ex);
                 }
             }
-        }
-
-        private async Task DoReactAsync(
-            EventWrapper? eventWrapper)
-        {
-            if (eventWrapper?.Event == null)
-            {
-                return;
-            }
-
-            var reaction = _eventReactionGenerator.Generate(eventWrapper);
-            await reaction.ReactAsync();
         }
     }
 }
