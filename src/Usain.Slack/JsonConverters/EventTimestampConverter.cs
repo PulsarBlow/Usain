@@ -12,6 +12,11 @@ namespace Usain.Slack.JsonConverters
             Type typeToConvert,
             JsonSerializerOptions options)
         {
+            if (reader.TokenType != JsonTokenType.String)
+            {
+                throw new JsonException();
+            }
+
             EventTimestamp.TryParse(reader.GetString(), out var eventTimestamp);
             return eventTimestamp;
         }

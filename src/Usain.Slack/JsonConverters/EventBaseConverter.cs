@@ -7,23 +7,27 @@ namespace Usain.Slack.JsonConverters
 
     public class EventBaseConverter : JsonConverter<Event>
     {
+        public override bool CanConvert(
+            Type typeToConvert)
+            => typeof(Event).IsAssignableFrom(typeToConvert);
+
         public override Event Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
         {
-            if (typeToConvert != typeof(Event))
-            {
-                return (Event) JsonSerializer.Deserialize(ref reader,
-                    typeToConvert, options);
-            }
-
             using JsonDocument document = JsonDocument.ParseValue(ref reader);
             var root = document.RootElement;
-            var eventType = root.GetProperty("type").GetString();
+            if (!root.TryGetProperty(
+                "type",
+                out var property)) { throw new JsonException(); }
+
+            var eventType = property.GetString();
             Type type = GetEventType(eventType);
-            return (Event) JsonSerializer.Deserialize(root.GetRawText(),
-                type, options);
+            return (Event) JsonSerializer.Deserialize(
+                root.GetRawText(),
+                type,
+                options);
         }
 
         public override void Write(
@@ -34,7 +38,8 @@ namespace Usain.Slack.JsonConverters
             throw new NotImplementedException();
         }
 
-        private static Type GetEventType(string type)
+        private static Type GetEventType(
+            string type)
         {
             return type switch
             {

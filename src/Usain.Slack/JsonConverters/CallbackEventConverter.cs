@@ -7,24 +7,27 @@ namespace Usain.Slack.JsonConverters
 
     public class CallbackEventConverter : JsonConverter<CallbackEvent>
     {
+        public override bool CanConvert(
+            Type typeToConvert)
+            => typeof(CallbackEvent).IsAssignableFrom(typeToConvert);
+
         public override CallbackEvent Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
         {
-            if (typeToConvert != typeof(CallbackEvent)
-                && typeToConvert != typeof(CallbackEvent))
-            {
-                return (CallbackEvent) JsonSerializer.Deserialize(ref reader,
-                    typeToConvert, options);
-            }
-
             using JsonDocument document = JsonDocument.ParseValue(ref reader);
             var root = document.RootElement;
-            var eventType = root.GetProperty("type").GetString();
+            if (!root.TryGetProperty(
+                "type",
+                out var property)) { throw new JsonException(); }
+
+            var eventType = property.GetString();
             Type type = GetEventType(eventType);
-            return (CallbackEvent) JsonSerializer.Deserialize(root.GetRawText(),
-                type, options);
+            return (CallbackEvent) JsonSerializer.Deserialize(
+                root.GetRawText(),
+                type,
+                options);
         }
 
         public override void Write(
@@ -35,7 +38,8 @@ namespace Usain.Slack.JsonConverters
             throw new NotImplementedException();
         }
 
-        private static Type GetEventType(string eventType)
+        private static Type GetEventType(
+            string eventType)
         {
             return eventType switch
             {
