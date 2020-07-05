@@ -3,7 +3,6 @@ namespace Usain.EventListener.Infrastructure.Hosting.Middlewares
     using System;
     using System.Threading.Tasks;
     using Extensions;
-    using Logging;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
     using Security;

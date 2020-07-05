@@ -1,4 +1,4 @@
-namespace Usain.EventListener.Infrastructure.Logging
+namespace Usain.EventListener.Commands
 {
     using System;
     using Microsoft.Extensions.Logging;
@@ -9,8 +9,7 @@ namespace Usain.EventListener.Infrastructure.Logging
             CommandHandling = LoggerMessage.Define<string>(
                 LogLevel.Information,
                 new EventId(
-                    EventIds.CommandHandler
-                        .HandlingCommand,
+                    0,
                     nameof(CommandHandling)),
                 "Handling command `{CommandName}`.");
 
@@ -19,8 +18,7 @@ namespace Usain.EventListener.Infrastructure.Logging
                 LoggerMessage.Define<string>(
                     LogLevel.Warning,
                     new EventId(
-                        EventIds.CommandHandler
-                            .CancellingCommand,
+                        0,
                         nameof(CommandCancelling)),
                     "Cancelling command `{CommandName}`.");
 
@@ -29,8 +27,7 @@ namespace Usain.EventListener.Infrastructure.Logging
                 LoggerMessage.Define<string>(
                     LogLevel.Information,
                     new EventId(
-                        EventIds.CommandHandler
-                            .CommandHandled,
+                        0,
                         nameof(CommandHandled)),
                     "Command `{CommandName}` successfully handled.");
 

@@ -1,4 +1,4 @@
-namespace Usain.EventListener.Infrastructure.Logging
+namespace Usain.EventListener.Infrastructure.Security
 {
     using System;
     using Microsoft.Extensions.Logging;
@@ -10,8 +10,7 @@ namespace Usain.EventListener.Infrastructure.Logging
                 LoggerMessage.Define(
                     LogLevel.Warning,
                     new EventId(
-                        EventIds.RequestAuthenticator
-                            .RequestAuthenticationIsDisabled,
+                        0,
                         nameof(
                             RequestAuthenticationIsDisabled
                         )),
@@ -23,8 +22,7 @@ namespace Usain.EventListener.Infrastructure.Logging
                 LoggerMessage.Define<string, string, string>(
                     LogLevel.Debug,
                     new EventId(
-                        EventIds.RequestAuthenticator
-                            .InvokingSignatureVerification,
+                        0,
                         nameof(InvokingSignatureVerification)),
                     "Invoking SignatureVerifier: timestamp={Timestamp}, signature={Signature}, message={Message}");
 

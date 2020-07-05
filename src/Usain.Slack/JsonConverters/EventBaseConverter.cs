@@ -24,6 +24,14 @@ namespace Usain.Slack.JsonConverters
 
             var eventType = property.GetString();
             Type type = GetEventType(eventType);
+
+            // Avoid infinite recursive behavior of the JsonSerializer.
+            // There is probably a better way.
+            if (type == typeof(Event))
+            {
+                return new Event { Type = "not_supported" };
+            }
+
             return (Event) JsonSerializer.Deserialize(
                 root.GetRawText(),
                 type,

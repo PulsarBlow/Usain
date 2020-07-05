@@ -3,11 +3,10 @@ namespace Usain.EventListener.Infrastructure.Hosting.Middlewares
     using System;
     using System.Threading.Tasks;
     using Endpoints;
-    using Logging;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
 
-    public class EventListenerMiddleware : IMiddleware
+    internal class EventListenerMiddleware : IMiddleware
     {
         private readonly ILogger _logger;
         private readonly IEndpointRouter _endpointRouter;
@@ -35,13 +34,13 @@ namespace Usain.EventListener.Infrastructure.Hosting.Middlewares
                             .FullName
                         ?? string.Empty,
                         context.Request.Path.ToString());
-                    var result = await endpointHandler.ProcessAsync(context);
+                    var result = await endpointHandler.ProcessAsync(context, context.RequestAborted);
 
                     _logger.LogUsainServerMiddlewareInvokingEndpointResult(
                         result.GetType()
                             .FullName
                         ?? string.Empty);
-                    await result.ExecuteAsync(context);
+                    await result.ExecuteAsync(context, context.RequestAborted);
 
                     return;
                 }

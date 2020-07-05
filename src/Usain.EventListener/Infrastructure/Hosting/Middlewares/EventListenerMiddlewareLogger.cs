@@ -1,15 +1,15 @@
-namespace Usain.EventListener.Infrastructure.Logging
+namespace Usain.EventListener.Infrastructure.Hosting.Middlewares
 {
     using System;
     using Microsoft.Extensions.Logging;
 
-    public static class ServerMiddlewareLogger
+    public static class EventListenerMiddlewareLogger
     {
         private static readonly Action<ILogger, string, string, Exception?>
             InvokingEndpointHandler = LoggerMessage.Define<string, string>(
                 LogLevel.Information,
                 new EventId(
-                    EventIds.UsainServerMiddleware.InvokingEndpointHandler,
+                    0,
                     nameof(InvokingEndpointHandler)),
                 "Invoking endpoint handler: {Name} for {Url}.");
 
@@ -17,7 +17,7 @@ namespace Usain.EventListener.Infrastructure.Logging
             InvokingEndpointResult = LoggerMessage.Define<string>(
                 LogLevel.Information,
                 new EventId(
-                    EventIds.UsainServerMiddleware.InvokingEndpointResult,
+                    0,
                     nameof(InvokingEndpointResult)),
                 "Invoking endpoint result: {Name}.");
 
@@ -25,7 +25,7 @@ namespace Usain.EventListener.Infrastructure.Logging
             UnhandledException = LoggerMessage.Define<string>(
                 LogLevel.Error,
                 new EventId(
-                    EventIds.UsainServerMiddleware.UnhandledException,
+                    0,
                     nameof(UnhandledException)),
                 "Unhandled exception: {Message}");
 

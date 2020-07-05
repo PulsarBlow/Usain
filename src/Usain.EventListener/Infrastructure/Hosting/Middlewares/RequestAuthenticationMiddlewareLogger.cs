@@ -1,4 +1,4 @@
-namespace Usain.EventListener.Infrastructure.Logging
+namespace Usain.EventListener.Infrastructure.Hosting.Middlewares
 {
     using System;
     using Microsoft.Extensions.Logging;
@@ -10,20 +10,18 @@ namespace Usain.EventListener.Infrastructure.Logging
                 LoggerMessage.Define(
                     LogLevel.Warning,
                     new EventId(
-                        EventIds.RequestAuthenticationMiddleware
-                            .AuthenticationFailed,
+                        0,
                         nameof(
                             AuthenticationFailed
                         )),
-                    "Request authentication failed. Responding `401 Unauthorize`.");
+                    "Request authentication failed. Responding `401 Unauthorized`.");
 
         private static readonly Action<ILogger, string, Exception?>
             UnhandledException =
                 LoggerMessage.Define<string>(
                     LogLevel.Critical,
                     new EventId(
-                        EventIds.RequestAuthenticationMiddleware
-                            .UnhandledException,
+                        0,
                         nameof(
                             UnhandledException
                         )),
