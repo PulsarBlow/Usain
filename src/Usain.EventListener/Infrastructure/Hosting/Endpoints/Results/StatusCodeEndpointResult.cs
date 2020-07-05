@@ -10,9 +10,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.Results
 
         public StatusCodeEndpointResult(
             int statusCode)
-        {
-            StatusCode = statusCode;
-        }
+            => StatusCode = statusCode;
 
         public Task ExecuteAsync(
             HttpContext context,

@@ -2,9 +2,8 @@ namespace Usain.EventListener.Commands
 {
     using System;
 
-    public interface ICommandResult
+    internal interface ICommandResult
     {
         Guid CommandId { get; }
-        CommandResultType ResultType { get; }
     }
 }

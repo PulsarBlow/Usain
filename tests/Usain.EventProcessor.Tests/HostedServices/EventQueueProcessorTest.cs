@@ -23,7 +23,7 @@ namespace Usain.EventProcessor.Tests.HostedServices
             new Mock<IEventReaction>();
         private EventWrapper _eventWrapper = new EventWrapper
         {
-            Event = new AppMentionEvent()
+            Event = new AppMentionEvent(),
         };
 
         public EventQueueProcessorTest()
@@ -68,11 +68,9 @@ namespace Usain.EventProcessor.Tests.HostedServices
         }
 
         private EventQueueProcessor CreateEventQueueProcessor()
-        {
-            return new EventQueueProcessor(
+            => new EventQueueProcessor(
                 _loggerMock.Object,
                 _eventQueueMock.Object,
                 _reactionGeneratorMock.Object);
-        }
     }
 }

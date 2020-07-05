@@ -31,7 +31,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators
         {
             var commandResult =
                 await _mediator.Send(
-                    new AcknowledgeAppRateLimitCommand(@event),
+                    new AcknowledgeAppRateLimitCommand(),
                     cancellationToken);
             if (!commandResult.IsSuccess)
             {

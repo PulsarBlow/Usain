@@ -7,8 +7,6 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.Results.Responses
         public Guid EventStoreId { get; }
 
         public CallbackEventResponse(Guid eventStoreId)
-        {
-            EventStoreId = eventStoreId;
-        }
+            => EventStoreId = eventStoreId;
     }
 }

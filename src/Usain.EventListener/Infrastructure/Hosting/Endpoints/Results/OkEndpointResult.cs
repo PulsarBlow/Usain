@@ -12,9 +12,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.Results
 
         public OkEndpointResult(
             TBodyContent bodyContent)
-        {
-            BodyContent = bodyContent;
-        }
+            => BodyContent = bodyContent;
 
         public async Task ExecuteAsync(
             HttpContext context,

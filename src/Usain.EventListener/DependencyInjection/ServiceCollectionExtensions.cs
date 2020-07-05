@@ -21,8 +21,6 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static IEventListenerBuilder AddUsainEventListenerBuilder(
             this IServiceCollection services)
-        {
-            return new EventListenerBuilder(services);
-        }
+            => new EventListenerBuilder(services);
     }
 }

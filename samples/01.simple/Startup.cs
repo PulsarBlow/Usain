@@ -24,9 +24,7 @@ namespace Usain.Samples.Simple
 
         public Startup(
             IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+            => _configuration = configuration;
 
         public void ConfigureServices(
             IServiceCollection services)

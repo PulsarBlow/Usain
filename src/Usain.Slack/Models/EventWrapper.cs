@@ -52,8 +52,6 @@ namespace Usain.Slack.Models
 
         protected EventWrapper(
             string eventType)
-        {
-            Type = eventType;
-        }
+            => Type = eventType;
     }
 }

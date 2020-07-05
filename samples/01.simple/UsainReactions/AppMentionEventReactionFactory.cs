@@ -24,7 +24,7 @@ namespace Usain.Samples.Simple.UsainReactions
         public IEventReaction<AppMentionEvent> Create(
             EventWrapper eventWrapper)
         {
-            if (eventWrapper?.Event is AppMentionEvent appMentionEvent)
+            if (eventWrapper?.Event is AppMentionEvent)
             {
                 return new AppMentionEventReaction(
                     _loggerFactory

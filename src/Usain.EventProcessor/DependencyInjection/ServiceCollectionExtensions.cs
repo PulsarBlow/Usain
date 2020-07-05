@@ -18,8 +18,6 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static IEventProcessorBuilder AddUsainEventProcessorBuilder(
             this IServiceCollection services)
-        {
-            return new EventProcessorBuilder(services);
-        }
+            => new EventProcessorBuilder(services);
     }
 }

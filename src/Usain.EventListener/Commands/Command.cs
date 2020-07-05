@@ -2,7 +2,7 @@ namespace Usain.EventListener.Commands
 {
     using System;
 
-    public class Command<TCommandResult> : ICommand<TCommandResult>
+    internal class Command<TCommandResult> : ICommand<TCommandResult>
         where TCommandResult : ICommandResult
     {
         public Guid Id { get; }
@@ -14,10 +14,9 @@ namespace Usain.EventListener.Commands
 
         protected Command(
             Guid commandId)
-        {
-            Id = commandId;
-        }
+            => Id = commandId;
 
-        public override string ToString() { return $"{GetType().Name}:{Id}"; }
+        public override string ToString()
+            => $"{GetType().Name}:{Id}";
     }
 }

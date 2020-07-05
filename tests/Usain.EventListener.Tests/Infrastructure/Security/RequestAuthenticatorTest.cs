@@ -3,7 +3,6 @@ namespace Usain.EventListener.Tests.Infrastructure.Security
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
-    using System.Threading;
     using System.Threading.Tasks;
     using Configuration;
     using EventListener.Extensions;
@@ -62,13 +61,13 @@ namespace Usain.EventListener.Tests.Infrastructure.Security
             var authenticator = CreateAuthenticator();
 
             Assert.True(
-                await authenticator.IsAuthenticAsync(
-                    _requestMock.Object,
-                    CancellationToken.None));
+                await authenticator.IsAuthenticAsync(_requestMock.Object));
         }
 
         [Theory]
-        [InlineData(true, true)]
+        [InlineData(
+            true,
+            true)]
         [InlineData(
             false,
             false)]
@@ -86,18 +85,17 @@ namespace Usain.EventListener.Tests.Infrastructure.Security
             var authenticator = CreateAuthenticator();
 
             var actual = await authenticator.IsAuthenticAsync(
-                _requestMock.Object,
-                CancellationToken.None);
+                _requestMock.Object);
 
-            Assert.Equal(expected, actual);
+            Assert.Equal(
+                expected,
+                actual);
         }
 
         private RequestAuthenticator CreateAuthenticator()
-        {
-            return new RequestAuthenticator(
+            => new RequestAuthenticator(
                 _loggerMock.Object,
                 _signatureVerifierMock.Object,
                 _optionsMonitorMock.Object);
-        }
     }
 }

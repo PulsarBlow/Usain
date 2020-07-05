@@ -14,11 +14,9 @@ namespace Usain.Core.Serialization
 
         public static string ToString(
             object o)
-        {
-            return JsonSerializer.Serialize(
+            => JsonSerializer.Serialize(
                 o,
                 Options);
-        }
 
         [return: MaybeNull]
         public static T FromString<T>(

@@ -9,8 +9,6 @@ namespace Usain.EventListener.Commands.VerifyUrl
             string challenge,
             CommandResultType commandResultType = CommandResultType.Success)
             : base(commandResultType)
-        {
-            Challenge = challenge;
-        }
+            => Challenge = challenge;
     }
 }

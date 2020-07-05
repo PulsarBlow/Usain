@@ -23,8 +23,6 @@ namespace Usain.Samples.Simple
         public Task<bool> TryDequeueAsync(
             [NotNullWhen(true)] out EventWrapper item,
             CancellationToken cancellationToken = default)
-        {
-            return Task.FromResult(_queue.TryDequeue(out item));
-        }
+            => Task.FromResult(_queue.TryDequeue(out item));
     }
 }

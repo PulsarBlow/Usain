@@ -86,10 +86,8 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.
         }
 
         private UrlVerificationEventResultGenerator CreateGenerator()
-        {
-            return new UrlVerificationEventResultGenerator(
+            => new UrlVerificationEventResultGenerator(
                 _loggerMock.Object,
                 _mediatorMock.Object);
-        }
     }
 }

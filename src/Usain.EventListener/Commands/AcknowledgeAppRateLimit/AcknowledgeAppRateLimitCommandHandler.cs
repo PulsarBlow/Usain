@@ -5,7 +5,7 @@ namespace Usain.EventListener.Commands.AcknowledgeAppRateLimit
     using System.Threading.Tasks;
     using Microsoft.Extensions.Logging;
 
-    public class AcknowledgeAppRateLimitCommandHandler
+    internal class AcknowledgeAppRateLimitCommandHandler
         : ICommandHandler<AcknowledgeAppRateLimitCommand,
             CommandResult>
     {
@@ -13,9 +13,7 @@ namespace Usain.EventListener.Commands.AcknowledgeAppRateLimit
 
         public AcknowledgeAppRateLimitCommandHandler(
             ILogger<AcknowledgeAppRateLimitCommandHandler> logger)
-        {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-        }
+            => _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
         public Task<CommandResult> Handle(
             AcknowledgeAppRateLimitCommand command,

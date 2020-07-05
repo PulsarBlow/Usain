@@ -71,8 +71,6 @@ namespace Usain.EventListener.Tests.Commands.VerifyUrl
         }
 
         private VerifyUrlCommandHandler CreateHandler()
-        {
-            return new VerifyUrlCommandHandler(_loggerMock.Object);
-        }
+            => new VerifyUrlCommandHandler(_loggerMock.Object);
     }
 }

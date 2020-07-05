@@ -6,7 +6,7 @@ namespace Usain.Slack.Models
     /// This event type is only dispatched when your app is rate limited on the Events API.
     /// Rate limiting currently occurs when your app would receive more than 30,000 events in an hour from a single workspace.
     /// This event does not require a specific OAuth scope or subscription.
-    /// You'll automatically receive it when your app's event subscriptions are rate limited or disabled.
+    /// You'll automatically receive it when your app event subscriptions are rate limited or disabled.
     /// Event subscriptions may be limited and disabled when your app does not
     /// respond with a HTTP 200 OK to at 5% of event deliveries in the past 60 minutes.
     /// </summary>

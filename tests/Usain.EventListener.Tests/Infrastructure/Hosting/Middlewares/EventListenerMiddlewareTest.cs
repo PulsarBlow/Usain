@@ -27,7 +27,7 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Middlewares
         private readonly Mock<HttpResponse> _httpResponseMock =
             new Mock<HttpResponse>();
         private readonly HeaderDictionary _headers = new HeaderDictionary();
-        private int _countNextCalls = 0;
+        private int _countNextCalls;
         private readonly RequestDelegate _next;
 
         public EventListenerMiddlewareTest()
@@ -116,10 +116,8 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Middlewares
         }
 
         private EventListenerMiddleware CreateMiddleware()
-        {
-            return new EventListenerMiddleware(
+            => new EventListenerMiddleware(
                 _loggerMock.Object,
                 _endpointRouterMock.Object);
-        }
     }
 }

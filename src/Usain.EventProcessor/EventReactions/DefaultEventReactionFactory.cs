@@ -13,18 +13,14 @@ namespace Usain.EventProcessor.EventReactions
 
         public DefaultEventReactionFactory(
             ILoggerFactory loggerFactory)
-        {
-            _logger = loggerFactory
+            => _logger = loggerFactory
                     .CreateLogger<NoopEventReaction<TCallbackEvent>>()
                 ?? throw new ArgumentNullException(nameof(loggerFactory));
-        }
 
         public IEventReaction<TCallbackEvent> Create(
             EventWrapper eventWrapper)
-        {
-            return new NoopEventReaction<TCallbackEvent>(
+            => new NoopEventReaction<TCallbackEvent>(
                 _logger,
                 eventWrapper);
-        }
     }
 }

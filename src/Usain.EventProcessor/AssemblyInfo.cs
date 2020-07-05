@@ -1,2 +1,4 @@
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Usain.EventProcessor.Tests")]
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DynamicProxyGenAssembly2")]
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("Usain.EventProcessor.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]

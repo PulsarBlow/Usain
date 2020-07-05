@@ -88,11 +88,9 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints
         }
 
         private EndpointRouter CreateRouter()
-        {
-            return new EndpointRouter(
+            => new EndpointRouter(
                 _loggerMock.Object,
                 _endpoints);
-        }
 
         private class BadHandler
         {
