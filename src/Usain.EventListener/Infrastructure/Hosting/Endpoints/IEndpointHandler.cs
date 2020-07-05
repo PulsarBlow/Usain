@@ -8,7 +8,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints
     /// <summary>
     /// Endpoint handler
     /// </summary>
-    public interface IEndpointHandler
+    internal interface IEndpointHandler
     {
         /// <summary>
         /// Processes the request.

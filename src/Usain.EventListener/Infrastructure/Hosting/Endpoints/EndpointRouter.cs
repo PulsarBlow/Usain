@@ -18,25 +18,27 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints
             _endpoints = endpoints;
         }
 
-        public IEndpointHandler? Find(HttpContext context)
+        public IEndpointHandler? Find(
+            HttpContext context)
         {
             foreach (var endpoint in _endpoints)
             {
                 var path = endpoint.Path;
-                if (context.Request.Path.Equals(path,
+                if (context.Request.Path.Equals(
+                    path,
                     StringComparison.OrdinalIgnoreCase))
                 {
-                    var endpointName = endpoint.Name;
-                    _logger.LogDebug(
-                        "Request path {path} matched to endpoint type {endpoint}",
-                        context.Request.Path, endpointName);
+                    _logger.LogEndpointFound(
+                        context.Request.Path,
+                        endpoint.Name);
 
-                    return GetEndpointHandler(endpoint, context);
+                    return GetEndpointHandler(
+                        endpoint,
+                        context);
                 }
             }
 
-            _logger.LogTrace("No endpoint entry found for request path: {path}",
-                context.Request.Path);
+            _logger.LogEndpointNotFound(context.Request.Path);
 
             return null;
         }
@@ -48,15 +50,16 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints
             if (context.RequestServices.GetService(endpoint.Handler) is
                 IEndpointHandler handler)
             {
-                _logger.LogDebug(
-                    "Endpoint enabled: {endpoint}, successfully created handler: {endpointHandler}",
-                    endpoint.Name, endpoint.Handler.FullName);
+                _logger.LogEndpointHandlerFound(
+                    endpoint.Name,
+                    endpoint.Handler.FullName ?? string.Empty);
                 return handler;
             }
 
-            _logger.LogDebug(
-                "Endpoint enabled: {endpoint}, failed to create handler: {endpointHandler}",
-                endpoint.Name, endpoint.Handler.FullName);
+            _logger.LogEndpointHandlerNotFound(
+                endpoint.Name,
+                endpoint.Handler.FullName ?? string.Empty);
+
             return null;
         }
     }

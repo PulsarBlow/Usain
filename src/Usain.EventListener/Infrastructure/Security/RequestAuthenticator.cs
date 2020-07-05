@@ -5,7 +5,6 @@ namespace Usain.EventListener.Infrastructure.Security
     using System.Threading.Tasks;
     using Configuration;
     using Extensions;
-    using Logging;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
@@ -13,22 +12,26 @@ namespace Usain.EventListener.Infrastructure.Security
 
     internal class RequestAuthenticator : IRequestAuthenticator
     {
-        private const string TimestampHeaderName = "X-Slack-Request-Timestamp";
-        private const string SignatureHeaderName = "X-Slack-Signature";
-
         private readonly ILogger _logger;
         private readonly IOptionsMonitor<EventListenerOptions>
             _optionsMonitorMonitor;
+        private readonly ISignatureVerifier _signatureVerifier;
 
         public RequestAuthenticator(
             ILogger<RequestAuthenticator> logger,
+            ISignatureVerifier signatureVerifier,
             IOptionsMonitor<EventListenerOptions> optionsMonitor)
         {
-            _logger = logger;
-            _optionsMonitorMonitor = optionsMonitor;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _signatureVerifier = signatureVerifier
+                ?? throw new ArgumentNullException(nameof(signatureVerifier));
+            _optionsMonitorMonitor = optionsMonitor
+                ?? throw new ArgumentNullException(nameof(optionsMonitor));
         }
 
-        public async Task<bool> IsAuthenticAsync(HttpRequest request, CancellationToken cancellationToken)
+        public async Task<bool> IsAuthenticAsync(
+            HttpRequest request,
+            CancellationToken cancellationToken)
         {
             var options = _optionsMonitorMonitor.CurrentValue;
             if (!options.IsRequestAuthenticationEnabled)
@@ -38,34 +41,19 @@ namespace Usain.EventListener.Infrastructure.Security
                 return true;
             }
 
-            var timestamp = GetTimestamp(request);
-            var signature = GetSignature(request);
-            var message = await request.ReadAsync(cancellationToken) ?? string.Empty;
+            var timestamp = request.GetSlackTimestampHeaderValue();
+            var signature = request.GetSlackSignatureHeaderValue();
+            var message = await request.ReadAsync() ?? string.Empty;
 
             _logger.LogInvokingSignatureVerification(
                 timestamp,
                 signature,
                 message);
-            var verifier = new SignatureVerifier(
-                options.SigningKey,
-                TimeSpan.FromSeconds(options.DeltaTimeToleranceSeconds));
 
-            return verifier.Verify(signature, timestamp, message);
-        }
-
-        private static long GetTimestamp(HttpRequest request)
-        {
-            request.Headers.TryGetValue(TimestampHeaderName,
-                out var timestampValues);
-            long.TryParse(timestampValues.ToString(), out var timestamp);
-            return timestamp;
-        }
-
-        private static string GetSignature(HttpRequest request)
-        {
-            request.Headers.TryGetValue(SignatureHeaderName,
-                out var signatureValues);
-            return signatureValues.ToString();
+            return _signatureVerifier.Verify(
+                signature,
+                timestamp,
+                message);
         }
     }
 }

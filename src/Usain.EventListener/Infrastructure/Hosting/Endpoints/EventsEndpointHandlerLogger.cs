@@ -1,4 +1,4 @@
-namespace Usain.EventListener.Infrastructure.Logging
+namespace Usain.EventListener.Infrastructure.Hosting.Endpoints
 {
     using System;
     using Microsoft.Extensions.Logging;
@@ -8,22 +8,30 @@ namespace Usain.EventListener.Infrastructure.Logging
         private static readonly Action<ILogger, Exception?> ProcessingEvent =
             LoggerMessage.Define(
                 LogLevel.Information,
-                new EventId(EventIds.EventsEndpointHandler.ProcessingEvent),
+                new EventId(
+                    0,
+                    nameof(ProcessingEvent)),
                 "Processing event request");
 
-        private static readonly Action<ILogger, string, Exception?> MethodNotAllowed =
-            LoggerMessage.Define<string>(
-                LogLevel.Warning,
-                new EventId(EventIds.EventsEndpointHandler.MethodNotAllowed),
-                "Events endpoint only support POST request. Was `{HttpMethod}`");
+        private static readonly Action<ILogger, string, Exception?>
+            MethodNotAllowed =
+                LoggerMessage.Define<string>(
+                    LogLevel.Warning,
+                    new EventId(
+                        0,
+                        nameof(MethodNotAllowed)),
+                    "Events endpoint only support POST request. Was `{HttpMethod}`");
 
         private static readonly Action<ILogger, Exception?>
             JsonDeserializationReturnNull =
                 LoggerMessage.Define(
                     LogLevel.Warning,
                     new EventId(
-                        EventIds.EventsEndpointHandler.JsonDeserializationReturnNull),
-                    "Json deserialization returned null. Unprocessable entity.");
+                        0,
+                        nameof(JsonDeserializationReturnNull)),
+                    "Json deserialization returned null. Unprocessable entity is returned.");
+
+
 
         public static void LogProcessingEvent(
             this ILogger logger)

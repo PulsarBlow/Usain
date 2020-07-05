@@ -5,7 +5,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints
     /// <summary>
     /// The endpoint router
     /// </summary>
-    public interface IEndpointRouter
+    internal interface IEndpointRouter
     {
         /// <summary>
         /// Finds a matching endpoint

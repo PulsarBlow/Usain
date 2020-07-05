@@ -1,18 +1,13 @@
 namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.Results
 {
+    using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
 
-    /// <summary>
-    /// Endpoint result
-    /// </summary>
-    public interface IEndpointResult
+    internal interface IEndpointResult
     {
-        /// <summary>
-        /// Executes the result.
-        /// </summary>
-        /// <param name="context">The HTTP context.</param>
-        /// <returns></returns>
-        Task ExecuteAsync(HttpContext context);
+        int StatusCode { get; }
+
+        Task ExecuteAsync(HttpContext context, CancellationToken cancellationToken);
     }
 }

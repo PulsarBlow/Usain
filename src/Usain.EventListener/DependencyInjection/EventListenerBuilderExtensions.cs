@@ -8,14 +8,16 @@ namespace Microsoft.Extensions.DependencyInjection
     using MediatR;
     using Options;
     using Usain.Core.Infrastructure;
-    using Usain.EventListener;
     using Usain.EventListener.Commands;
     using Usain.EventListener.Configuration;
     using Usain.EventListener.Infrastructure.Hosting.Endpoints;
+    using Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators;
     using Usain.EventListener.Infrastructure.Hosting.Middlewares;
     using Usain.EventListener.Infrastructure.Security;
     using Usain.Slack.Models;
-    using Endpoint = Usain.EventListener.Infrastructure.Hosting.Endpoints.Endpoint;
+    using Usain.Slack.Security;
+    using Endpoint =
+        Usain.EventListener.Infrastructure.Hosting.Endpoints.Endpoint;
 
     public static class EventListenerBuilderExtensions
     {
@@ -59,18 +61,22 @@ namespace Microsoft.Extensions.DependencyInjection
             // Add core services, they aren't substitutable.
             builder.Services
                 .AddSingleton<IRequestAuthenticator, RequestAuthenticator>();
+            builder.Services
+                .AddTransient<
+                    IEventsEndpointResultGenerator<UrlVerificationEvent>,
+                    UrlVerificationEventResultGenerator>();
+            builder.Services
+                .AddTransient<
+                    IEventsEndpointResultGenerator<AppRateLimitedEvent>,
+                    AppRateLimitedEventResultGenerator>();
+            builder.Services
+                .AddTransient<
+                    IEventsEndpointResultGenerator<EventWrapper>,
+                    CallbackEventResultGenerator>();
             builder.Services.AddTransient<IEndpointRouter, EndpointRouter>();
+            builder.Services.AddTransient(CreateSignatureVerifier);
             builder.Services.AddScoped<RequestAuthenticationMiddleware>();
             builder.Services.AddScoped<EventListenerMiddleware>();
-
-            return builder;
-        }
-
-        internal static IEventListenerBuilder AddPluggableServices(
-            this IEventListenerBuilder builder)
-        {
-            // Add pluggable services, they are substitutable.
-
 
             return builder;
         }
@@ -79,8 +85,8 @@ namespace Microsoft.Extensions.DependencyInjection
             this IEventListenerBuilder builder)
         {
             builder.AddEndpoint<EventsEndpointHandler>(
-                Constants.EndpointNames.EventsApi,
-                Constants.ProtocolRoutePaths.Events);
+                EventsEndpointHandler.EndpointName,
+                EventsEndpointHandler.ProtocolRoutePath);
 
             return builder;
         }
@@ -99,6 +105,18 @@ namespace Microsoft.Extensions.DependencyInjection
                     typeof(TEndpointHandler)));
 
             return builder;
+        }
+
+        private static ISignatureVerifier CreateSignatureVerifier(
+            IServiceProvider serviceProvider)
+        {
+            var optionsMonitor =
+                serviceProvider.GetRequiredService<
+                    IOptionsMonitor<EventListenerOptions>>();
+            var options = optionsMonitor.CurrentValue;
+            return new SignatureVerifier(
+                options.SigningKey,
+                TimeSpan.FromSeconds(options.DeltaTimeToleranceSeconds));
         }
     }
 }

@@ -3,13 +3,21 @@ namespace Usain.EventListener.Commands
     using System;
 
     public class Command<TCommandResult> : ICommand<TCommandResult>
-        where TCommandResult: ICommandResult
+        where TCommandResult : ICommandResult
     {
-        public Guid Id { get; } = Guid.NewGuid();
+        public Guid Id { get; }
 
-        public override string ToString()
+        protected Command()
+            : this(Guid.NewGuid())
         {
-            return $"{GetType().Name}:{Id}";
         }
+
+        protected Command(
+            Guid commandId)
+        {
+            Id = commandId;
+        }
+
+        public override string ToString() { return $"{GetType().Name}:{Id}"; }
     }
 }

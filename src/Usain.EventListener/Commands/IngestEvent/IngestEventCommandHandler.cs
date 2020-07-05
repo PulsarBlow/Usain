@@ -4,7 +4,6 @@ namespace Usain.EventListener.Commands.IngestEvent
     using System.Threading;
     using System.Threading.Tasks;
     using Core.Infrastructure;
-    using Infrastructure.Logging;
     using Microsoft.Extensions.Logging;
     using Slack.Models;
 
@@ -22,7 +21,9 @@ namespace Usain.EventListener.Commands.IngestEvent
             _eventQueue = eventQueue;
         }
 
-        public async Task<IngestEventCommandResult> Handle(IngestEventCommand command, CancellationToken cancellationToken)
+        public async Task<IngestEventCommandResult> Handle(
+            IngestEventCommand command,
+            CancellationToken cancellationToken)
         {
             _logger.LogCommandHandling(command.ToString());
             if (cancellationToken
@@ -35,7 +36,9 @@ namespace Usain.EventListener.Commands.IngestEvent
             }
 
             var @event = command.Event;
-            await _eventQueue.EnqueueAsync(@event, cancellationToken);
+            await _eventQueue.EnqueueAsync(
+                @event,
+                cancellationToken);
             _logger.LogCommandHandled(command.ToString());
 
             return new IngestEventCommandResult(@event.InternalId);

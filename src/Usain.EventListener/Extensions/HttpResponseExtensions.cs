@@ -1,48 +1,48 @@
 namespace Usain.EventListener.Extensions
 {
+    using System.Threading;
     using System.Threading.Tasks;
     using Core.Serialization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Net.Http.Headers;
 
-    public static class HttpResponseExtensions
+    internal static class HttpResponseExtensions
     {
-        public static void SetNoCache(this HttpResponse httpResponse)
-        {
-            if (!httpResponse.Headers.ContainsKey(HeaderNames.CacheControl))
-            {
-                httpResponse.Headers.Add(HeaderNames.CacheControl, "no-store, no-cache, max-age=0");
-            }
-            else
-            {
-                httpResponse.Headers[HeaderNames.CacheControl] = "no-store, no-cache, max-age=0";
-            }
+        public const string CacheControlValue = "no-store, no-cache, max-age=0";
+        public const string PragmaValue = "no-cache";
 
-            if (!httpResponse.Headers.ContainsKey(HeaderNames.Pragma))
-            {
-                httpResponse.Headers.Add(HeaderNames.Pragma, "no-cache");
-            }
+        public static void SetNoCache(
+            this HttpResponse httpResponse)
+        {
+            httpResponse.Headers[HeaderNames.CacheControl] = CacheControlValue;
+            httpResponse.Headers[HeaderNames.Pragma] = PragmaValue;
         }
 
         public static async Task WriteJsonAsync(
             this HttpResponse response,
             object value,
-            string? contentType = null)
+            string? contentType = null,
+            CancellationToken cancellationToken = default)
         {
             var json = ObjectSerializer.ToString(value);
-            await response.WriteJsonAsync(json, contentType);
-            await response.Body.FlushAsync();
+            await response.WriteJsonAsync(
+                json,
+                contentType,
+                cancellationToken);
         }
 
         public static async Task WriteJsonAsync(
             this HttpResponse response,
             string json,
-            string? contentType = null)
+            string? contentType = null,
+            CancellationToken cancellationToken = default)
         {
             response.ContentType =
                 contentType ?? "application/json; charset=UTF-8";
-            await response.WriteAsync(json);
-            await response.Body.FlushAsync();
+            await response.WriteAsync(
+                json,
+                cancellationToken);
+            await response.Body.FlushAsync(cancellationToken);
         }
     }
 }

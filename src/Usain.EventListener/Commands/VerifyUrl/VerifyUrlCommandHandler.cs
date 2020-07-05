@@ -19,14 +19,26 @@ namespace Usain.EventListener.Commands.VerifyUrl
             VerifyUrlCommand command,
             CancellationToken cancellationToken)
         {
-            _logger.LogDebug(
-                "Handling Slack UrlVerification command:\nCommand={0}",
-                command);
-            return Task.FromResult(string.IsNullOrEmpty(command.Challenge)
+            _logger.LogCommandHandling(command.ToString());
+
+            if (cancellationToken.IsCancellationRequested)
+            {
+                _logger.LogCommandCancelling(command.ToString());
+                return Task.FromResult(
+                    new VerifyUrlCommandResult(
+                        command.Challenge,
+                        CommandResultType.Aborted));
+            }
+
+            var commandResult = string.IsNullOrEmpty(command.Challenge)
                 ? new VerifyUrlCommandResult(
                     string.Empty,
                     CommandResultType.Failure)
-                : new VerifyUrlCommandResult(command.Challenge));
+                : new VerifyUrlCommandResult(command.Challenge);
+
+            _logger.LogCommandHandled(command.ToString());
+
+            return Task.FromResult(commandResult);
         }
     }
 }

@@ -5,16 +5,17 @@ namespace Usain.Slack.Security
     using System.Text;
 
     public class SignatureVerifier
+        : ISignatureVerifier
     {
         private readonly string _signingSecret;
-        private readonly TimeSpan _timeTolerance;
+        private readonly TimeSpan _deltaTimeTolerance;
 
         public SignatureVerifier(
             string signingSecret,
-            TimeSpan timeTolerance)
+            TimeSpan deltaTimeTolerance)
         {
             _signingSecret = signingSecret;
-            _timeTolerance = timeTolerance;
+            _deltaTimeTolerance = deltaTimeTolerance;
         }
 
         public bool Verify(
@@ -38,7 +39,7 @@ namespace Usain.Slack.Security
             var currentPosixTime = DateTimeOffset.UtcNow;
             var messagePosixTime =
                 DateTimeOffset.FromUnixTimeSeconds(timestamp);
-            return currentPosixTime - messagePosixTime <= _timeTolerance;
+            return currentPosixTime - messagePosixTime <= _deltaTimeTolerance;
         }
 
         private string GenerateSignature(

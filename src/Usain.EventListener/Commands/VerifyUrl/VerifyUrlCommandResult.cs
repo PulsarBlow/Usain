@@ -3,7 +3,7 @@ namespace Usain.EventListener.Commands.VerifyUrl
     public class VerifyUrlCommandResult
         : CommandResult
     {
-        public string? Challenge { get; }
+        public string Challenge { get; }
 
         public VerifyUrlCommandResult(
             string challenge,

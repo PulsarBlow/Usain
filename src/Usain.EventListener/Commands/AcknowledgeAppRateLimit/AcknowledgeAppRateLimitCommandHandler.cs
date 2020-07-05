@@ -1,8 +1,8 @@
 namespace Usain.EventListener.Commands.AcknowledgeAppRateLimit
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
-    using Infrastructure.Logging;
     using Microsoft.Extensions.Logging;
 
     public class AcknowledgeAppRateLimitCommandHandler
@@ -14,7 +14,7 @@ namespace Usain.EventListener.Commands.AcknowledgeAppRateLimit
         public AcknowledgeAppRateLimitCommandHandler(
             ILogger<AcknowledgeAppRateLimitCommandHandler> logger)
         {
-            _logger = logger;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
         public Task<CommandResult> Handle(
@@ -22,6 +22,7 @@ namespace Usain.EventListener.Commands.AcknowledgeAppRateLimit
             CancellationToken cancellationToken)
         {
             _logger.LogCommandHandling(command.ToString());
+
             if (cancellationToken
                 .IsCancellationRequested)
             {
