@@ -72,10 +72,8 @@ namespace Usain.EventProcessor.Tests.EventReactions
         }
 
         private EventReactionGenerator CreateGenerator()
-        {
-            return new EventReactionGenerator(
+            => new EventReactionGenerator(
                 _noopEventReactionFactoryMock.Object,
                 _appMentionEventReactionFactoryMock.Object);
-        }
     }
 }

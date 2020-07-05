@@ -16,8 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
     using Usain.EventListener.Infrastructure.Security;
     using Usain.Slack.Models;
     using Usain.Slack.Security;
-    using Endpoint =
-        Usain.EventListener.Infrastructure.Hosting.Endpoints.Endpoint;
+    using Endpoint = Usain.EventListener.Infrastructure.Hosting.Endpoints.Endpoint;
 
     public static class EventListenerBuilderExtensions
     {

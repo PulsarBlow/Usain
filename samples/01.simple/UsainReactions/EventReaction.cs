@@ -15,9 +15,9 @@ namespace Usain.Samples.Simple.UsainReactions
         where TEvent : CallbackEvent
     {
         private readonly ISlackApiClient _apiClient;
-        protected readonly ILogger<EventReaction<TEvent>> _logger;
 
-        protected readonly EventWrapper _eventWrapper;
+        protected readonly ILogger<EventReaction<TEvent>> Logger;
+        protected readonly EventWrapper EventWrapper;
 
         public TEvent Event { get; }
 
@@ -26,15 +26,15 @@ namespace Usain.Samples.Simple.UsainReactions
             ISlackApiClient apiClient,
             EventWrapper eventWrapper)
         {
-            _logger = logger;
+            Logger = logger;
             _apiClient = apiClient;
-            _eventWrapper = eventWrapper;
+            EventWrapper = eventWrapper;
             Event = eventWrapper.Event as TEvent;
         }
 
         public async Task ReactAsync()
         {
-            if (_eventWrapper.Event is IChannelEvent channelEvent)
+            if (EventWrapper.Event is IChannelEvent channelEvent)
             {
                 var message = CreatePostMessageRequest(channelEvent);
                 await _apiClient.Chat.Post(message);
@@ -45,27 +45,25 @@ namespace Usain.Samples.Simple.UsainReactions
 
         private void DefaultEventReaction()
         {
-            _logger.LogInformation(
+            Logger.LogInformation(
                 "Noop reaction for event `{EventType}`",
-                _eventWrapper.Event?.Type);
+                EventWrapper.Event?.Type);
         }
 
         protected PostMessageRequest CreateDefaultMessage()
-        {
-            return new PostMessageRequest
+            => new PostMessageRequest
             {
                 Text = "Usain Reaction : <null>",
             };
-        }
 
         protected virtual PostMessageRequest CreatePostMessageRequest(IChannelEvent channelEvent)
         {
-            if (_eventWrapper?.Event == null)
+            if (EventWrapper?.Event == null)
             {
                 return CreateDefaultMessage();
             }
 
-            var @event = _eventWrapper.Event;
+            var @event = EventWrapper.Event;
             var titleSection = new Section(new MarkdownText("Usain Reaction"))
             {
                 Fields = new List<TextObject>
@@ -73,7 +71,7 @@ namespace Usain.Samples.Simple.UsainReactions
                     new MarkdownText($"*Type:*\n{@event.Type}"),
                     new MarkdownText(
                         $"*When:*\n{DateTimeOffset.FromUnixTimeSeconds(@event.EventTimestamp.Timestamp)}"),
-                }
+                },
             };
 
             return new PostMessageRequest
@@ -81,8 +79,8 @@ namespace Usain.Samples.Simple.UsainReactions
                 Channel = channelEvent.Channel,
                 Blocks = new List<IMessageBlock>
                 {
-                    titleSection
-                }
+                    titleSection,
+                },
             };
         }
     }

@@ -1,7 +1,5 @@
 namespace Usain.EventProcessor.Tests.EventReactions
 {
-    using System;
-    using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
     using EventProcessor.EventReactions;
     using Microsoft.Extensions.Logging;

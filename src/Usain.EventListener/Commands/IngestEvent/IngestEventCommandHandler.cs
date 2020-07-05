@@ -7,7 +7,7 @@ namespace Usain.EventListener.Commands.IngestEvent
     using Microsoft.Extensions.Logging;
     using Slack.Models;
 
-    public class IngestEventCommandHandler
+    internal class IngestEventCommandHandler
         : ICommandHandler<IngestEventCommand, IngestEventCommandResult>
     {
         private readonly ILogger _logger;

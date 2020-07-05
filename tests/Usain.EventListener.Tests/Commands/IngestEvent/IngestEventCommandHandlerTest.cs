@@ -58,10 +58,8 @@ namespace Usain.EventListener.Tests.Commands.IngestEvent
         }
 
         private IngestEventCommandHandler CreateHandler()
-        {
-            return new IngestEventCommandHandler(
+            => new IngestEventCommandHandler(
                 _loggerMock.Object,
                 _eventQueueMock.Object);
-        }
     }
 }

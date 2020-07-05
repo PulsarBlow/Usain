@@ -1,7 +1,6 @@
 namespace Usain.EventListener.Infrastructure.Security
 {
     using System;
-    using System.Threading;
     using System.Threading.Tasks;
     using Configuration;
     using Extensions;
@@ -30,8 +29,7 @@ namespace Usain.EventListener.Infrastructure.Security
         }
 
         public async Task<bool> IsAuthenticAsync(
-            HttpRequest request,
-            CancellationToken cancellationToken)
+            HttpRequest request)
         {
             var options = _optionsMonitorMonitor.CurrentValue;
             if (!options.IsRequestAuthenticationEnabled)

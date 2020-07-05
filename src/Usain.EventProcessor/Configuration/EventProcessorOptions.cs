@@ -7,8 +7,8 @@ namespace Usain.EventProcessor.Configuration
     public class EventProcessorOptions
         : IConfigureOptions<EventProcessorOptions>
     {
+        private const string OptionsSectionKeyName = "UsainEventProcessor";
         private readonly IConfiguration? _configuration;
-        internal const string OptionsSectionKeyName = "UsainEventProcessor";
 
         public int CheckUpdateTimeMs { get; set; } = 1000;
 
@@ -16,10 +16,8 @@ namespace Usain.EventProcessor.Configuration
 
         public EventProcessorOptions(
             IConfiguration configuration)
-        {
-            _configuration = configuration
+            => _configuration = configuration
                 ?? throw new ArgumentNullException(nameof(configuration));
-        }
 
         public void Configure(
             EventProcessorOptions options)

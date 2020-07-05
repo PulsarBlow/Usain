@@ -4,7 +4,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators
     using Commands;
     using Microsoft.Extensions.Logging;
 
-    public static class EventResultGeneratorLogger
+    internal static class EventResultGeneratorLogger
     {
         private static readonly Action<ILogger, string, string, Exception?>
             CommandFailed =

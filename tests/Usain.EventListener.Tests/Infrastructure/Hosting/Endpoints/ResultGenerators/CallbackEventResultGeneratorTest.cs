@@ -71,10 +71,8 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.ResultGener
         }
 
         private CallbackEventResultGenerator CreateGenerator()
-        {
-            return new CallbackEventResultGenerator(
+            => new CallbackEventResultGenerator(
                 _loggerMock.Object,
                 _mediatorMock.Object);
-        }
     }
 }

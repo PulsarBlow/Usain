@@ -7,7 +7,7 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.Results
     using Moq;
     using Xunit;
 
-    public class StatusCodeEnpointResultTest
+    public class StatusCodeEndpointResultTest
     {
         [Theory]
         [InlineData(StatusCodes.Status100Continue)]

@@ -18,9 +18,6 @@ namespace User.Slack.Tests.JsonConverters
         [Fact]
         public void Read_Returns_EventTimestamp()
         {
-            var reader =
-                new Utf8JsonReader(Encoding.UTF8.GetBytes(JsonData));
-            var converter = new EventTimestampConverter();
             var actual = ExecuteRead(JsonData);
 
             Assert.Equal(
@@ -34,9 +31,6 @@ namespace User.Slack.Tests.JsonConverters
         [Fact]
         public void Read_Throws_JsonException_When_TokenType_Is_Not_String()
         {
-            var reader =
-                new Utf8JsonReader(Encoding.UTF8.GetBytes(JsonData));
-            var converter = new EventTimestampConverter();
             Assert.Throws<JsonException>(
                 () => ExecuteRead(
                     JsonData,
@@ -63,7 +57,6 @@ namespace User.Slack.Tests.JsonConverters
             var reader =
                 new Utf8JsonReader(Encoding.UTF8.GetBytes(json));
             while (reader.TokenType != tokenType) { reader.Read(); }
-
 
             return new EventTimestampConverter().Read(
                 ref reader,

@@ -1,6 +1,8 @@
+using System.Runtime.CompilerServices;
+
 [assembly:
-    System.Runtime.CompilerServices.InternalsVisibleTo(
+    InternalsVisibleTo(
         "Usain.EventListener.Tests")]
 [assembly:
-    System.Runtime.CompilerServices.InternalsVisibleTo(
+    InternalsVisibleTo(
         "DynamicProxyGenAssembly2")]

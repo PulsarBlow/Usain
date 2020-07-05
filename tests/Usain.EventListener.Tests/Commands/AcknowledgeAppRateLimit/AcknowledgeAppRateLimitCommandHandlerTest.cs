@@ -6,7 +6,6 @@ namespace Usain.EventListener.Tests.Commands.AcknowledgeAppRateLimit
     using EventListener.Commands.AcknowledgeAppRateLimit;
     using Microsoft.Extensions.Logging;
     using Moq;
-    using Slack.Models;
     using Xunit;
 
     public class AcknowledgeAppRateLimitCommandHandlerTest
@@ -21,7 +20,7 @@ namespace Usain.EventListener.Tests.Commands.AcknowledgeAppRateLimit
             var cancellationToken = new CancellationToken(true);
             var handler = CreateHandler();
             var actual = await handler.Handle(
-                new AcknowledgeAppRateLimitCommand(new AppRateLimitedEvent()),
+                new AcknowledgeAppRateLimitCommand(),
                 cancellationToken);
 
             Assert.Equal(CommandResultType.Aborted, actual.ResultType);
@@ -30,12 +29,11 @@ namespace Usain.EventListener.Tests.Commands.AcknowledgeAppRateLimit
         [Fact]
         public async Task Handle_Returns_Success()
         {
-            var @event = new AppRateLimitedEvent();
             var cancellationToken = new CancellationToken();
             var handler = CreateHandler();
 
             var actual = await handler.Handle(
-                new AcknowledgeAppRateLimitCommand(@event),
+                new AcknowledgeAppRateLimitCommand(),
                 cancellationToken);
 
             Assert.Equal(
@@ -44,8 +42,6 @@ namespace Usain.EventListener.Tests.Commands.AcknowledgeAppRateLimit
         }
 
         private AcknowledgeAppRateLimitCommandHandler CreateHandler()
-        {
-            return new AcknowledgeAppRateLimitCommandHandler(_loggerMock.Object);
-        }
+            => new AcknowledgeAppRateLimitCommandHandler(_loggerMock.Object);
     }
 }

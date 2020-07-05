@@ -32,7 +32,7 @@ namespace Usain.Samples.Simple.UsainReactions
         protected override PostMessageRequest CreatePostMessageRequest(
             IChannelEvent channelEvent)
         {
-            if (!(_eventWrapper.Event is AppMentionEvent appMentionEvent))
+            if (!(EventWrapper.Event is AppMentionEvent appMentionEvent))
             {
                 return CreateDefaultMessage();
             }
@@ -46,18 +46,16 @@ namespace Usain.Samples.Simple.UsainReactions
                 Channel = appMentionEvent.Channel,
                 Blocks = new List<IMessageBlock>
                 {
-                    titleSection
-                }
+                    titleSection,
+                },
             };
         }
 
         private string GetGreetings(
             string user)
-        {
-            return string.Format(
+            => string.Format(
                 _greetings[
                     RandomNumberGenerator.GetInt32(_greetings.Length - 1)],
                 user);
-        }
     }
 }

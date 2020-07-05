@@ -1,9 +1,7 @@
 namespace Usain.EventProcessor.Tests.DependencyInjection
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Runtime.CompilerServices;
     using System.Threading;
     using System.Threading.Tasks;
     using Configuration;
@@ -128,16 +126,12 @@ namespace Usain.EventProcessor.Tests.DependencyInjection
             public Task EnqueueAsync(
                 EventWrapper item,
                 CancellationToken cancellationToken)
-            {
-                throw new System.NotImplementedException();
-            }
+                => throw new NotImplementedException();
 
             public Task<bool> TryDequeueAsync(
                 out EventWrapper item,
                 CancellationToken cancellationToken)
-            {
-                throw new System.NotImplementedException();
-            }
+                => throw new NotImplementedException();
         }
 
         private class EventQueueSecond : IEventQueue<EventWrapper>
@@ -145,16 +139,12 @@ namespace Usain.EventProcessor.Tests.DependencyInjection
             public Task EnqueueAsync(
                 EventWrapper item,
                 CancellationToken cancellationToken)
-            {
-                throw new System.NotImplementedException();
-            }
+                => throw new NotImplementedException();
 
             public Task<bool> TryDequeueAsync(
                 out EventWrapper item,
                 CancellationToken cancellationToken)
-            {
-                throw new System.NotImplementedException();
-            }
+                => throw new NotImplementedException();
         }
     }
 }

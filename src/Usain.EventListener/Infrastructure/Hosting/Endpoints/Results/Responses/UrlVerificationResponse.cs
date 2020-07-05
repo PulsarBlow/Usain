@@ -6,8 +6,6 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.Results.Responses
 
         public UrlVerificationResponse(
             string challenge)
-        {
-            Challenge = challenge;
-        }
+            => Challenge = challenge;
     }
 }

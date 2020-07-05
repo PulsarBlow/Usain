@@ -26,7 +26,7 @@ namespace User.Slack.Tests.Models
             string suffix,
             bool expected)
         {
-            var eventTimestamp = new EventTimestamp()
+            var eventTimestamp = new EventTimestamp
             {
                 Timestamp = timestamp,
                 Suffix = suffix,

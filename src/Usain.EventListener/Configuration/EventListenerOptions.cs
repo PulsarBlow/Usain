@@ -6,9 +6,9 @@ namespace Usain.EventListener.Configuration
 
     public class EventListenerOptions : IConfigureOptions<EventListenerOptions>
     {
+        private const string OptionsSectionKeyName = "UsainEventListener";
         private readonly IConfiguration? _configuration;
 
-        public const string OptionsSectionKeyName = "UsainEventListener";
         public bool IsRequestAuthenticationEnabled { get; set; } = true;
         public string SigningKey { get; set; } = string.Empty;
 
@@ -24,9 +24,7 @@ namespace Usain.EventListener.Configuration
 
         public EventListenerOptions(
             IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
+            => _configuration = configuration;
 
         public void Configure(
             EventListenerOptions options)

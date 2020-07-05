@@ -15,8 +15,6 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services"></param>
         public EventProcessorBuilder(
             IServiceCollection services)
-        {
-            Services = services;
-        }
+            => Services = services;
     }
 }

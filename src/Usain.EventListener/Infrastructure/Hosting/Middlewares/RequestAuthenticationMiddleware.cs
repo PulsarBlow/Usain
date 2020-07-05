@@ -27,10 +27,10 @@ namespace Usain.EventListener.Infrastructure.Hosting.Middlewares
             try
             {
                 if (!await _requestAuthenticator.IsAuthenticAsync(
-                    context.Request,
-                    context.RequestAborted))
+                    context.Request))
                 {
-                    _logger.LogRequestAuthenticationMiddlewareAuthenticationFailed();
+                    _logger
+                        .LogRequestAuthenticationMiddlewareAuthenticationFailed();
                     context.Response.SetNoCache();
                     context.Response.StatusCode =
                         StatusCodes.Status401Unauthorized;

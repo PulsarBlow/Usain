@@ -56,10 +56,8 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.
         }
 
         private AppRateLimitedEventResultGenerator CreateGenerator()
-        {
-            return new AppRateLimitedEventResultGenerator(
+            => new AppRateLimitedEventResultGenerator(
                 _loggerMock.Object,
                 _mediatorMock.Object);
-        }
     }
 }

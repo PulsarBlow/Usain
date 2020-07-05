@@ -148,12 +148,10 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints
         }
 
         private EventsEndpointHandler CreateHandler()
-        {
-            return new EventsEndpointHandler(
+            => new EventsEndpointHandler(
                 _loggerMock.Object,
                 _urlVerificationResultGeneratorMock.Object,
                 _appRateLimitedResultGeneratorMock.Object,
                 _callbackEventResultGeneratorMock.Object);
-        }
     }
 }

@@ -10,8 +10,6 @@ namespace Usain.EventListener.Commands.IngestEvent
             Guid eventStoreId,
             CommandResultType resultType = CommandResultType.Success)
             : base(resultType)
-        {
-            EventStoreId = eventStoreId;
-        }
+            => EventStoreId = eventStoreId;
     }
 }

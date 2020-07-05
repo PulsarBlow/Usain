@@ -55,11 +55,9 @@ namespace Usain.Slack.Security
 
         private static string ByteArrayToHex(
             byte[] value)
-        {
-            return BitConverter.ToString(value)
+            => BitConverter.ToString(value)
                 .Replace(
                     "-",
                     "");
-        }
     }
 }

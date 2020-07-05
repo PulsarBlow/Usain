@@ -1,7 +1,6 @@
 namespace Usain.EventListener.Tests.Infrastructure.Hosting.Middlewares
 {
     using System;
-    using System.Threading;
     using System.Threading.Tasks;
     using EventListener.Infrastructure.Hosting.Middlewares;
     using EventListener.Infrastructure.Security;
@@ -12,8 +11,9 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Middlewares
 
     public class RequestAuthenticationMiddlewareTest
     {
-        private readonly Mock<ILogger<RequestAuthenticationMiddleware>> _loggerMock
-            = new Mock<ILogger<RequestAuthenticationMiddleware>>();
+        private readonly Mock<ILogger<RequestAuthenticationMiddleware>>
+            _loggerMock
+                = new Mock<ILogger<RequestAuthenticationMiddleware>>();
         private readonly Mock<IRequestAuthenticator> _requestAuthenticatorMock =
             new Mock<IRequestAuthenticator>();
         private readonly Mock<HttpContext> _httpContextMock =
@@ -21,16 +21,13 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Middlewares
         private readonly Mock<HttpResponse> _httpResponseMock =
             new Mock<HttpResponse>();
         private readonly HeaderDictionary _headers = new HeaderDictionary();
-        private int _countNextCalls = 0;
+        private int _countNextCalls;
         private readonly RequestDelegate _next;
 
         public RequestAuthenticationMiddlewareTest()
         {
             _requestAuthenticatorMock
-                .Setup(
-                    x => x.IsAuthenticAsync(
-                        It.IsAny<HttpRequest>(),
-                        It.IsAny<CancellationToken>()))
+                .Setup(x => x.IsAuthenticAsync(It.IsAny<HttpRequest>()))
                 .Returns(Task.FromResult(true));
             _httpResponseMock
                 .SetupGet(x => x.Headers)
@@ -50,10 +47,7 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Middlewares
             InvokeAsync_Returns_Unauthorized_When_Authentication_Fails()
         {
             _requestAuthenticatorMock
-                .Setup(
-                    x => x.IsAuthenticAsync(
-                        It.IsAny<HttpRequest>(),
-                        It.IsAny<CancellationToken>()))
+                .Setup(x => x.IsAuthenticAsync(It.IsAny<HttpRequest>()))
                 .Returns(Task.FromResult(false));
             _httpResponseMock
                 .SetupSet(
@@ -92,10 +86,7 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Middlewares
         public async Task InvokeAsync_Throws_When_Exception_Occurs()
         {
             _requestAuthenticatorMock
-                .Setup(
-                    x => x.IsAuthenticAsync(
-                        It.IsAny<HttpRequest>(),
-                        It.IsAny<CancellationToken>()))
+                .Setup(x => x.IsAuthenticAsync(It.IsAny<HttpRequest>()))
                 .Throws<Exception>();
 
             var middleware = CreateMiddleware();
@@ -113,10 +104,8 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Middlewares
         }
 
         private RequestAuthenticationMiddleware CreateMiddleware()
-        {
-            return new RequestAuthenticationMiddleware(
+            => new RequestAuthenticationMiddleware(
                 _loggerMock.Object,
                 _requestAuthenticatorMock.Object);
-        }
     }
 }
