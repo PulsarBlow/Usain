@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../../props/common.props"/>
+  
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <UserSecretsId>2b800b27-3c6c-4866-aff7-4b6281387977</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Queues" Version="$(AzureStorageQueuesVersion)"/>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="$(MicrosoftExtensionsHostingVersion)"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Usain.EventProcessor\Usain.EventProcessor.csproj"/>
+    <ProjectReference Include="..\Usain.Samples.Advanced.AzureQueue.Common\Usain.Samples.Advanced.AzureQueue.Common.csproj"/>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

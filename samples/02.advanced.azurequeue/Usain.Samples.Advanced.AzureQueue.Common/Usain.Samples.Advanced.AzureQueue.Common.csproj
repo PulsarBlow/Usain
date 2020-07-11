@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../../props/common.props"/>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="$(MicrosoftExtensionsConfigurationVersion)"/>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="$(MicrosoftExtensionsLoggingVersion)"/>
+    <PackageReference Include="Azure.Storage.Queues" Version="$(AzureStorageQueuesVersion)"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Usain.Core\Usain.Core.csproj"/>
+    <ProjectReference Include="..\..\..\src\Usain.Slack\Usain.Slack.csproj"/>
+  </ItemGroup>
+
+</Project>

@@ -7,6 +7,10 @@
     <XUnitRunnerVersion>2.4.2</XUnitRunnerVersion>
     <TestSdkVersion>16.6.1</TestSdkVersion>
     <MoqVersion>4.14.4</MoqVersion>
+    <MicrosoftExtensionsConfigurationVersion>3.1.5</MicrosoftExtensionsConfigurationVersion>
+    <MicrosoftExtensionsLoggingVersion>3.1.5</MicrosoftExtensionsLoggingVersion>
+    <MicrosoftExtensionsHostingVersion>3.1.5</MicrosoftExtensionsHostingVersion>
+    <AzureStorageQueuesVersion>12.3.2</AzureStorageQueuesVersion>
   </PropertyGroup>
 
 </Project>
