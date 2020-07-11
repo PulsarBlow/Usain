@@ -9,8 +9,6 @@ namespace Usain.Core.Infrastructure
         Task EnqueueAsync(
             [NotNull] TItem item, CancellationToken cancellationToken);
 
-        Task<bool> TryDequeueAsync(
-            [NotNullWhen(true)] out TItem item,
-            CancellationToken cancellationToken);
+        Task<TItem> DequeueAsync(CancellationToken cancellationToken);
     }
 }

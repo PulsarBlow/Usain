@@ -1,7 +1,6 @@
 namespace Usain.Samples.Simple
 {
     using System.Collections.Concurrent;
-    using System.Diagnostics.CodeAnalysis;
     using System.Threading;
     using System.Threading.Tasks;
     using Core.Infrastructure;
@@ -20,9 +19,11 @@ namespace Usain.Samples.Simple
             return Task.CompletedTask;
         }
 
-        public Task<bool> TryDequeueAsync(
-            [NotNullWhen(true)] out EventWrapper item,
+        public Task<EventWrapper> DequeueAsync(
             CancellationToken cancellationToken = default)
-            => Task.FromResult(_queue.TryDequeue(out item));
+        {
+            _queue.TryDequeue(out var item);
+            return Task.FromResult(item);
+        }
     }
 }

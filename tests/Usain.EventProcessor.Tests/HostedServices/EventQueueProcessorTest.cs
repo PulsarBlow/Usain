@@ -32,10 +32,9 @@ namespace Usain.EventProcessor.Tests.HostedServices
                 .Setup(x => x.Generate(_eventWrapper))
                 .Returns(_reactionMock.Object);
             _eventQueueMock.Setup(
-                    x => x.TryDequeueAsync(
-                        out _eventWrapper,
+                    x => x.DequeueAsync(
                         It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult(true));
+                .Returns(Task.FromResult(_eventWrapper));
         }
 
         [Fact]
@@ -54,10 +53,8 @@ namespace Usain.EventProcessor.Tests.HostedServices
         {
             _eventWrapper = new EventWrapper(); // EventWrapper's Event property is not set
             _eventQueueMock.Setup(
-                    x => x.TryDequeueAsync(
-                        out _eventWrapper,
-                        It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult(true));
+                    x => x.DequeueAsync(It.IsAny<CancellationToken>()))
+                .Returns(Task.FromResult(_eventWrapper));
 
             var queueProcessor = CreateEventQueueProcessor();
             await queueProcessor.ProcessQueueAsync(CancellationToken.None);
