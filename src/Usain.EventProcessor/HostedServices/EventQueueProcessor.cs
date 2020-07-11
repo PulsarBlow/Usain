@@ -31,9 +31,8 @@ namespace Usain.EventProcessor.HostedServices
             CancellationToken cancellationToken)
         {
             _logger.LogProcessingQueue();
-            if (await _eventQueue.TryDequeueAsync(
-                out var @event,
-                cancellationToken))
+            var @event = await _eventQueue.DequeueAsync(cancellationToken);
+            if(@event != null)
             {
                 _logger.LogEventHasBeenDequeued(@event?.Type ?? string.Empty);
                 await ReactToEventAsync(@event);

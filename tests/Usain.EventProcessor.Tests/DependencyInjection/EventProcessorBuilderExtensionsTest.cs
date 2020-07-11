@@ -128,8 +128,7 @@ namespace Usain.EventProcessor.Tests.DependencyInjection
                 CancellationToken cancellationToken)
                 => throw new NotImplementedException();
 
-            public Task<bool> TryDequeueAsync(
-                out EventWrapper item,
+            public Task<EventWrapper> DequeueAsync(
                 CancellationToken cancellationToken)
                 => throw new NotImplementedException();
         }
@@ -141,8 +140,7 @@ namespace Usain.EventProcessor.Tests.DependencyInjection
                 CancellationToken cancellationToken)
                 => throw new NotImplementedException();
 
-            public Task<bool> TryDequeueAsync(
-                out EventWrapper item,
+            public Task<EventWrapper> DequeueAsync(
                 CancellationToken cancellationToken)
                 => throw new NotImplementedException();
         }
