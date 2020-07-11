@@ -13,9 +13,9 @@ namespace Usain.Samples.Simple.UsainReactions
     {
         private readonly string[] _greetings = {
             "Hi <@{0}>! What's going on ?",
-            "How's it going <@{0}>?",
-            "Good to see you <@{0}>?",
-            "It’s been a while <@{0}>!",
+            "How's it going <@{0}> ?",
+            "Good to see you <@{0}>, it's been a while !",
+            "How can i help you <@{0}> ?",
         };
 
         public AppMentionEventReaction(
