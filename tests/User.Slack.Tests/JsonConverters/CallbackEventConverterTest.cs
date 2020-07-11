@@ -1,6 +1,7 @@
 namespace User.Slack.Tests.JsonConverters
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Text;
     using System.Text.Json;
@@ -16,7 +17,7 @@ namespace User.Slack.Tests.JsonConverters
 
         [Theory]
         [InlineData(
-            typeof(TestObject),
+            typeof(EmptyTestObject),
             false)]
         [InlineData(
             typeof(EventTimestamp),
@@ -62,17 +63,81 @@ namespace User.Slack.Tests.JsonConverters
                 @event.Type);
         }
 
-        [Fact]
-        public void Write_Throws_NotImplementedException()
+        [Theory]
+        [MemberData(nameof(Write_Returns_Expected_Value_Data))]
+        public void Write_Returns_Expected_Value(
+            CallbackEvent callbackEvent,
+            string expected)
         {
-            using var stream = new MemoryStream(Encoding.UTF8.GetBytes("{}"));
+            using var stream = new MemoryStream();
             using var writer = new Utf8JsonWriter(stream);
             var converter = new CallbackEventConverter();
-            Assert.Throws<NotImplementedException>(
-                () => converter.Write(
-                    writer,
-                    new CallbackEvent(),
-                    _options));
+            converter.Write(
+                writer,
+                callbackEvent,
+                _options);
+            writer.Flush();
+
+            var actual = Encoding.UTF8.GetString(stream.ToArray());
+
+            Assert.Equal(
+                expected,
+                actual);
+        }
+
+        public static IEnumerable<object[]> Write_Returns_Expected_Value_Data()
+        {
+            yield return new object[]
+            {
+                new AppMentionEvent
+                {
+                    Channel = "channel",
+                    Text = "text",
+                    Type = AppMentionEvent.EventType,
+                    User = "user",
+                    Timestamp = new EventTimestamp
+                        { Suffix = "006", Timestamp = 123456, },
+                    EventTimestamp = new EventTimestamp
+                        { Suffix = "006", Timestamp = 123456, },
+                },
+                "{\"user\":\"user\",\"text\":\"text\",\"ts\":\"123456.006\",\"channel\":\"channel\",\"type\":\"app_mention\",\"event_ts\":\"123456.006\"}",
+            };
+
+            yield return new object[]
+            {
+                new AppMentionEvent
+                {
+                    Channel = "channel",
+                    Text = "text",
+                    Type = AppMentionEvent.EventType,
+                    User = "user",
+                    Timestamp = new EventTimestamp
+                        { Suffix = "006", Timestamp = 123456, },
+                    EventTimestamp = new EventTimestamp
+                        { Suffix = "006", Timestamp = 123456, },
+                },
+                "{\"user\":\"user\",\"text\":\"text\",\"ts\":\"123456.006\",\"channel\":\"channel\",\"type\":\"app_mention\",\"event_ts\":\"123456.006\"}",
+            };
+
+            yield return new object[]
+            {
+                new CallbackEvent
+                {
+                    Type = "callback_event",
+                    EventTimestamp = new EventTimestamp
+                        { Suffix = "006", Timestamp = 123456 },
+                },
+                "{\"type\":\"callback_event\",\"event_ts\":\"123456.006\"}",
+            };
+
+            yield return new object[]
+            {
+                new NewEvent
+                {
+                    Type = "new_event",
+                },
+                "{\"type\":\"new_event\"}",
+            };
         }
 
         private CallbackEvent ExecuteRead(
@@ -87,9 +152,14 @@ namespace User.Slack.Tests.JsonConverters
                 _options);
         }
 
-
-        private class TestObject
+        private class EmptyTestObject
         {
+        }
+
+        private class NewEvent : CallbackEvent
+        {
+            public string NewValue { get; set; }
+            public bool SomeFlag { get; set; }
         }
     }
 }
