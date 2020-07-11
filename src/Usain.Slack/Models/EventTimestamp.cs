@@ -23,15 +23,46 @@ namespace Usain.Slack.Models
             eventTimestamp = Empty;
             if (string.IsNullOrWhiteSpace(value)) { return false; }
 
+            if (value.IndexOf('.') == -1)
+            {
+                return TryParsePartial(
+                    value,
+                    out eventTimestamp);
+            }
+
+            return TryParseComplete(
+                value,
+                out eventTimestamp);
+        }
+
+        private static bool TryParsePartial(
+            string value,
+            out EventTimestamp eventTimestamp)
+        {
+            eventTimestamp = Empty;
+            if (!long.TryParse(
+                value,
+                out var timestamp)) { return false; }
+
+            eventTimestamp.Timestamp = timestamp;
+            return true;
+        }
+
+        private static bool TryParseComplete(
+            string value,
+            out EventTimestamp eventTimestamp)
+        {
+            eventTimestamp = Empty;
             var parts = value.Split(
                 '.',
                 StringSplitOptions.RemoveEmptyEntries);
-            if (parts?.Length != 2) return false;
-            long.TryParse(
+            if (!long.TryParse(
                 parts[0],
-                out var timestamp);
+                out var timestamp)) { return false; }
+
             eventTimestamp.Timestamp = timestamp;
-            eventTimestamp.Suffix = parts[1];
+            if (parts.Length == 2) { eventTimestamp.Suffix = parts[1]; }
+
             return true;
         }
 
@@ -53,5 +84,8 @@ namespace Usain.Slack.Models
                 other.Suffix,
                 StringComparison.Ordinal);
         }
+
+        public override string ToString()
+            => $"{Timestamp}{(string.IsNullOrEmpty(Suffix) ? "" : ".")}{Suffix}";
     }
 }

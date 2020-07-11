@@ -72,7 +72,8 @@ namespace User.Slack.Tests.Models
 
             Assert.Equal(
                 areEqual,
-                0 == expectedTs.CompareTo(
+                0
+                == expectedTs.CompareTo(
                     new EventTimestamp
                         { Timestamp = timestamp, Suffix = suffix }));
         }
@@ -81,13 +82,17 @@ namespace User.Slack.Tests.Models
         public void CompareTo_Equal_Self()
         {
             var timestamp = new EventTimestamp();
-            Assert.Equal(0, timestamp.CompareTo(timestamp));
+            Assert.Equal(
+                0,
+                timestamp.CompareTo(timestamp));
         }
 
         [Fact]
         public void CompareTo_Not_Equal_When_Null()
         {
-            Assert.NotEqual(0, new EventTimestamp().CompareTo(null));
+            Assert.NotEqual(
+                0,
+                new EventTimestamp().CompareTo(null));
         }
 
         [Theory]
@@ -97,7 +102,40 @@ namespace User.Slack.Tests.Models
         public void TryParse_Returns_False_When_Value_Is_NullEmptyOrWhitespace(
             string value)
         {
-            Assert.False(EventTimestamp.TryParse(value, out _));
+            Assert.False(
+                EventTimestamp.TryParse(
+                    value,
+                    out _));
+        }
+
+        [Theory]
+        [InlineData(
+            "0", "0")]
+        [InlineData(
+            "1", "1")]
+        [InlineData(
+            "123456.06",
+            "123456.06")]
+        [InlineData(
+            "A",
+            "0")]
+        [InlineData(
+            "1.",
+            "1")]
+        [InlineData(
+            ".ABC",
+            "0")]
+        public void ToString_Returns_Expected_Value(
+            string value,
+            string expected)
+        {
+            EventTimestamp.TryParse(
+                value,
+                out var eventTimeStamp);
+
+            Assert.Equal(
+                expected,
+                eventTimeStamp.ToString());
         }
     }
 }

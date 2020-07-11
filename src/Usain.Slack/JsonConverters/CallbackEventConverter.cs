@@ -35,7 +35,23 @@ namespace Usain.Slack.JsonConverters
             CallbackEvent value,
             JsonSerializerOptions options)
         {
-            throw new NotImplementedException();
+            if (value is AppMentionEvent @event)
+            {
+                JsonSerializer.Serialize(
+                    writer,
+                    @event);
+                return;
+            }
+
+            writer.WriteStartObject();
+            writer.WriteString(CallbackEvent.TypePropertyName, value.Type);
+            if (!value.EventTimestamp.IsEmpty)
+            {
+                writer.WriteString(
+                    CallbackEvent.EventTimestampPropertyName,
+                    value.EventTimestamp.ToString());
+            }
+            writer.WriteEndObject();
         }
 
         private static Type GetEventType(

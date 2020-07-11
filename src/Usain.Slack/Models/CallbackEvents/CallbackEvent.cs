@@ -7,10 +7,13 @@ namespace Usain.Slack.Models.CallbackEvents
     [JsonConverter(typeof(CallbackEventConverter))]
     public class CallbackEvent
     {
-        [JsonPropertyName("type")]
+        internal const string TypePropertyName = "type";
+        internal const string EventTimestampPropertyName = "event_ts";
+
+        [JsonPropertyName(TypePropertyName)]
         public string? Type { get; set; }
 
-        [JsonPropertyName("event_ts")]
+        [JsonPropertyName(EventTimestampPropertyName)]
         public EventTimestamp EventTimestamp { get; set; } =
             EventTimestamp.Empty;
 

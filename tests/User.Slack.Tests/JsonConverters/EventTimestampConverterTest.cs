@@ -1,6 +1,5 @@
 namespace User.Slack.Tests.JsonConverters
 {
-    using System;
     using System.IO;
     using System.Text;
     using System.Text.Json;
@@ -37,17 +36,38 @@ namespace User.Slack.Tests.JsonConverters
                     JsonTokenType.StartObject));
         }
 
-        [Fact]
-        public void Write_Throws_NotImplementedException()
+        [Theory]
+        [InlineData(
+            0,
+            "",
+            "\"0\"")]
+        [InlineData(
+            0,
+            "0",
+            "\"0.0\"")]
+        [InlineData(
+            123456,
+            "06",
+            "\"123456.06\"")]
+        public void Write_Returns_Expected_Value(
+            long timestamp,
+            string suffix,
+            string expected)
         {
-            using var stream = new MemoryStream(Encoding.UTF8.GetBytes("{}"));
+            using var stream = new MemoryStream();
             using var writer = new Utf8JsonWriter(stream);
             var converter = new EventTimestampConverter();
-            Assert.Throws<NotImplementedException>(
-                () => converter.Write(
-                    writer,
-                    new EventTimestamp(),
-                    _options));
+            converter.Write(
+                writer,
+                new EventTimestamp() { Suffix = suffix, Timestamp = timestamp },
+                _options);
+            writer.Flush();
+
+            var actual = Encoding.UTF8.GetString(stream.ToArray());
+
+            Assert.Equal(
+                expected,
+                actual);
         }
 
         private EventTimestamp ExecuteRead(

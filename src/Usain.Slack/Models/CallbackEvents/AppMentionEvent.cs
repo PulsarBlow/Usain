@@ -4,18 +4,22 @@ namespace Usain.Slack.Models.CallbackEvents
 
     public class AppMentionEvent : CallbackEvent, IChannelEvent
     {
+        internal const string UserJsonName = "user";
+        internal const string TextJsonName = "text";
+        internal const string TimestampJsonName = "ts";
+        internal const string ChannelJsonName = "channel";
         public const string EventType = "app_mention";
 
-        [JsonPropertyName("user")]
+        [JsonPropertyName(UserJsonName)]
         public string? User { get; set; }
 
-        [JsonPropertyName("text")]
+        [JsonPropertyName(TextJsonName)]
         public string? Text { get; set; }
 
-        [JsonPropertyName("ts")]
+        [JsonPropertyName(TimestampJsonName)]
         public EventTimestamp Timestamp { get; set; } = EventTimestamp.Empty;
 
-        [JsonPropertyName("channel")]
+        [JsonPropertyName(ChannelJsonName)]
         public string? Channel { get; set; }
     }
 }
