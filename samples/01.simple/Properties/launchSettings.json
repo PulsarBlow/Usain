@@ -1,21 +1,6 @@
 ﻿{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:4306",
-      "sslPort": 44384
-    }
-  },
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": false,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "Usain.Samples.SlackApp": {
+    "Usain.Samples.Simple": {
       "commandName": "Project",
       "launchBrowser": false,
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
