@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".misc", ".misc", "{4011E025-1874-493C-82F2-650C44450DC7}"
+ProjectSection(SolutionItems) = preProject
+	README.md = README.md
+EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{DEB97747-F0E8-43CA-8E41-757B2EEA8C91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.simple", "01.simple", "{E6EA5262-1E5E-4AE5-B44A-F4A5987D4BC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Usain.Samples.Simple", "01.simple\Usain.Samples.Simple.csproj", "{9CA326A9-9729-4544-B535-5E4A478A6E16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.advanced.azurequeue", "02.advanced.azurequeue", "{9299BEB8-0FFA-4D39-973D-655672692DAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Usain.Samples.Advanced.AzureQueue.Common", "02.advanced.azurequeue\Usain.Samples.Advanced.AzureQueue.Common\Usain.Samples.Advanced.AzureQueue.Common.csproj", "{7FB97F19-B38E-423C-A2F5-DA859D45DF59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Usain.Samples.Advanced.AzureQueue.EventListener", "02.advanced.azurequeue\Usain.Samples.Advanced.AzureQueue.EventListener\Usain.Samples.Advanced.AzureQueue.EventListener.csproj", "{8DE7C75E-9797-4D19-A1C7-3329DE5E99D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Usain.Samples.Advanced.AzureQueue.EventProcessor", "02.advanced.azurequeue\Usain.Samples.Advanced.AzureQueue.EventProcessor\Usain.Samples.Advanced.AzureQueue.EventProcessor.csproj", "{CDDB6BBB-E185-4B91-9769-6336968A5B86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E6EA5262-1E5E-4AE5-B44A-F4A5987D4BC9} = {DEB97747-F0E8-43CA-8E41-757B2EEA8C91}
+		{9CA326A9-9729-4544-B535-5E4A478A6E16} = {E6EA5262-1E5E-4AE5-B44A-F4A5987D4BC9}
+		{9299BEB8-0FFA-4D39-973D-655672692DAD} = {DEB97747-F0E8-43CA-8E41-757B2EEA8C91}
+		{7FB97F19-B38E-423C-A2F5-DA859D45DF59} = {9299BEB8-0FFA-4D39-973D-655672692DAD}
+		{8DE7C75E-9797-4D19-A1C7-3329DE5E99D0} = {9299BEB8-0FFA-4D39-973D-655672692DAD}
+		{CDDB6BBB-E185-4B91-9769-6336968A5B86} = {9299BEB8-0FFA-4D39-973D-655672692DAD}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CA326A9-9729-4544-B535-5E4A478A6E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA326A9-9729-4544-B535-5E4A478A6E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA326A9-9729-4544-B535-5E4A478A6E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA326A9-9729-4544-B535-5E4A478A6E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB97F19-B38E-423C-A2F5-DA859D45DF59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB97F19-B38E-423C-A2F5-DA859D45DF59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB97F19-B38E-423C-A2F5-DA859D45DF59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB97F19-B38E-423C-A2F5-DA859D45DF59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DE7C75E-9797-4D19-A1C7-3329DE5E99D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DE7C75E-9797-4D19-A1C7-3329DE5E99D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DE7C75E-9797-4D19-A1C7-3329DE5E99D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DE7C75E-9797-4D19-A1C7-3329DE5E99D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDDB6BBB-E185-4B91-9769-6336968A5B86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDDB6BBB-E185-4B91-9769-6336968A5B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDDB6BBB-E185-4B91-9769-6336968A5B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDDB6BBB-E185-4B91-9769-6336968A5B86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
