@@ -7,7 +7,7 @@ namespace Usain.Slack.Models
     public class Event
     {
         /// <summary>
-        /// 	Indicates which kind of event dispatch this is, usually `event_callback`
+        /// Indicates which kind of event dispatch this is, usually `event_callback`
         /// </summary>
         /// <example>event_callback</example>
         [JsonPropertyName("type")]

@@ -8,7 +8,7 @@
 <h4 align="center">A simple, fast and scalable Slack events server for .NET</h4>
 
 
-# Introduction
+# What is Usain ?
 
 There are plenty of existing Slack integration frameworks. Slack engineering team even provide its own implementation with Bolt (JS, Java).\
 However, while trying to integrate Slack using a .NET Core stack, i didn't find any project that was simple to use, while being fast and scalable...
@@ -69,6 +69,8 @@ Usain has been designed to follow that recommendation from the ground up. It use
 
 We provide a default in-memory implementation for basic scenarios, but swapping this default for something more scalable is a matter of a single line of configuration.
 
+For example, in the [02.Advanced.AzureQueue] sample app, we use an [Azure Queue Storage] for the queue infrastructure.
+
 <p align="center">
   <img alt="Usain Scalability" src="assets/doc/arch_scalability.png" width="768" />
 </p>
@@ -97,6 +99,10 @@ Meanwhile, jump to the sample sources:
 - [01.Simple]: demonstrates how to use Usain's Event Listener and Event Processor inside a unique web app. It uses an in-memory shared event queue. For demo purpose only.
 - [02.Advanced.AzureQueue]: demonstrates how to use Usain's Event Listener and the Event Process in distinct hosting processes. It uses an [Azure Queue Storage], providing a better scalability and good fault tolerance.
 
+# Others resources
+
+- [Supported events]: list of Slack events currently supported by Usain
+
 
 # Attributions
 
@@ -110,5 +116,6 @@ Usain icons made by [Pixel perfect] from [FlatIcon]
 [01.Simple]: <./samples/01.simple>
 [02.Advanced.AzureQueue]: <./samples/02.advanced.azurequeue>
 [Azure Queue Storage]: <https://azure.microsoft.com/en-us/services/storage/queues/>
+[Supported events]: <./docs/supported_events.md>
 [FlatIcon]: <http://www.flaticon.com/>
 [Pixel perfect]: <https://www.flaticon.com/authors/pixel-perfect>
