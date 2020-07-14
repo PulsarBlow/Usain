@@ -30,12 +30,25 @@ namespace Usain.Slack.Models
         [JsonPropertyName("api_app_id")]
         public string? ApiAppId { get; set; }
 
+        /// <summary>
+        /// An array of string-based User IDs.
+        /// Each member of the collection represents a user that has installed your application/bot
+        /// and indicates the described event would be visible to those users.
+        /// </summary>
         [JsonPropertyName("authed_users")]
         public string[]? AuthedUsers { get; set; }
 
+        /// <summary>
+        /// A unique identifier for this specific event, globally unique across all workspaces.
+        /// </summary>
+        /// <example>Ev0PV52K25</example>
         [JsonPropertyName("event_id")]
         public string? EventId { get; set; }
 
+        /// <summary>
+        /// The epoch timestamp in seconds indicating when this event was dispatched.
+        /// </summary>
+        /// <example>1525215129</example>
         [JsonPropertyName("event_time")]
         public long? EventTime { get; set; }
 
