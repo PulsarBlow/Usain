@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../../props/common.props" />
+  <Import Project="../../../props/common.props" />
   <PropertyGroup>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Usain.Slack\Usain.Slack.csproj" />
+    <ProjectReference Include="..\..\..\src\Usain.Core\Usain.Core.csproj" />
   </ItemGroup>
 
 </Project>
