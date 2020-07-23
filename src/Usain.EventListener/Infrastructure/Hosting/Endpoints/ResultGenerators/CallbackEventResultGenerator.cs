@@ -7,7 +7,6 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
     using Results;
-    using Results.Responses;
     using Slack.Models;
 
     internal class CallbackEventResultGenerator
@@ -34,13 +33,12 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators
                     cancellationToken);
             if (!commandResult.IsSuccess)
             {
-                _logger.LogCommandFailed(commandResult);
+                _logger.LogUnsuccessfulCommandResult(commandResult);
                 return new StatusCodeEndpointResult(
                     StatusCodes.Status422UnprocessableEntity);
             }
 
-            return new OkEndpointResult<CallbackEventResponse>(
-                new CallbackEventResponse(commandResult.EventStoreId));
+            return new OkEndpointResult();
         }
     }
 }

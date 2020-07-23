@@ -25,7 +25,8 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.
         [Theory]
         [InlineData(
             CommandResultType.Aborted,
-            typeof(StatusCodeEndpointResult), StatusCodes.Status422UnprocessableEntity)]
+            typeof(StatusCodeEndpointResult),
+            StatusCodes.Status422UnprocessableEntity)]
         [InlineData(
             CommandResultType.Failure,
             typeof(StatusCodeEndpointResult),
@@ -45,14 +46,22 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.
                     x => x.Send(
                         It.IsAny<AcknowledgeAppRateLimitCommand>(),
                         It.IsAny<CancellationToken>()))
-                .Returns(Task.FromResult(new CommandResult(commandResultType)));
+                .Returns(
+                    Task.FromResult(
+                        new CommandResult(
+                            Guid.NewGuid(),
+                            commandResultType)));
             var generator = CreateGenerator();
 
             var actual = await generator.GenerateResult(
                 new AppRateLimitedEvent(),
                 CancellationToken.None);
-            Assert.IsType(expectedResultType, actual);
-            Assert.Equal(expectedStatusCode, actual.StatusCode);
+            Assert.IsType(
+                expectedResultType,
+                actual);
+            Assert.Equal(
+                expectedStatusCode,
+                actual.StatusCode);
         }
 
         private AppRateLimitedEventResultGenerator CreateGenerator()

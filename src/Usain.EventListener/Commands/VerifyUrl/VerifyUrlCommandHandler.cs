@@ -25,14 +25,16 @@ namespace Usain.EventListener.Commands.VerifyUrl
                 return Task.FromResult(
                     new VerifyUrlCommandResult(
                         command.Challenge,
+                        command.Id,
                         CommandResultType.Aborted));
             }
 
             var commandResult = string.IsNullOrEmpty(command.Challenge)
                 ? new VerifyUrlCommandResult(
                     string.Empty,
+                    command.Id,
                     CommandResultType.Failure)
-                : new VerifyUrlCommandResult(command.Challenge);
+                : new VerifyUrlCommandResult(command.Challenge, command.Id);
 
             _logger.LogCommandHandled(command.ToString());
 

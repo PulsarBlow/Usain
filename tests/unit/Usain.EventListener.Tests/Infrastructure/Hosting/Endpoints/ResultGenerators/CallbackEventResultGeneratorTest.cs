@@ -1,4 +1,5 @@
-namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.ResultGenerators
+namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.
+    ResultGenerators
 {
     using System;
     using System.Threading;
@@ -7,7 +8,6 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.ResultGener
     using EventListener.Commands.IngestEvent;
     using EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators;
     using EventListener.Infrastructure.Hosting.Endpoints.Results;
-    using EventListener.Infrastructure.Hosting.Endpoints.Results.Responses;
     using MediatR;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
@@ -17,7 +17,7 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.ResultGener
 
     public class CallbackEventResultGeneratorTest
     {
-                private readonly Mock<ILogger<CallbackEventResultGenerator>>
+        private readonly Mock<ILogger<CallbackEventResultGenerator>>
             _loggerMock =
                 new Mock<ILogger<CallbackEventResultGenerator>>();
         private readonly Mock<IMediator> _mediatorMock = new Mock<IMediator>();
@@ -33,7 +33,7 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.ResultGener
             StatusCodes.Status422UnprocessableEntity)]
         [InlineData(
             CommandResultType.Success,
-            typeof(OkEndpointResult<CallbackEventResponse>),
+            typeof(OkEndpointResult),
             StatusCodes.Status200OK)]
         public async Task
             GenerateResult_Returns_Expected_EndpointResult(
@@ -41,7 +41,6 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.ResultGener
                 Type expectedResultType,
                 int expectedStatusCode)
         {
-            var eventStoreId = Guid.NewGuid();
             _mediatorMock
                 .Setup(
                     x => x.Send(
@@ -49,7 +48,9 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.ResultGener
                         It.IsAny<CancellationToken>()))
                 .Returns(
                     Task.FromResult(
-                        new IngestEventCommandResult(eventStoreId, commandResultType)));
+                        new CommandResult(
+                            Guid.NewGuid(),
+                            commandResultType)));
             var generator = CreateGenerator();
 
             var actual = await generator.GenerateResult(
@@ -62,12 +63,6 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.ResultGener
             Assert.Equal(
                 expectedStatusCode,
                 actual.StatusCode);
-            if (actual is OkEndpointResult<CallbackEventResponse> okEndpointResult)
-            {
-                Assert.Equal(
-                    eventStoreId,
-                    okEndpointResult.BodyContent.EventStoreId);
-            }
         }
 
         private CallbackEventResultGenerator CreateGenerator()

@@ -35,7 +35,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators
                     cancellationToken);
             if (!commandResult.IsSuccess)
             {
-                _logger.LogCommandFailed(commandResult);
+                _logger.LogUnsuccessfulCommandResult(commandResult);
                 return new StatusCodeEndpointResult(
                     StatusCodes.Status422UnprocessableEntity);
             }

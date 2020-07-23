@@ -46,30 +46,7 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.Results
                     => Assert.Equal(
                         HttpResponseExtensions.PragmaValue,
                         kvp.Value));
-        }
-
-        [Fact]
-        public async Task ExecuteAsync__Write_BodyContent_To_Response()
-        {
-            var eventStoreId = Guid.NewGuid();
-            await using var stream = new MemoryStream();
-            var mockPipeWriter = PipeWriter.Create(
-                stream,
-                new StreamPipeWriterOptions());
-
-            _httpContextMock
-                .SetupGet(x => x.Response.Body)
-                .Returns(stream);
-            _httpContextMock
-                .SetupGet(x => x.Response.BodyWriter)
-                .Returns(mockPipeWriter);
-
-            var result = new OkEndpointResult<CallbackEventResponse>(new CallbackEventResponse(eventStoreId));
-            await result.ExecuteAsync(
-                _httpContextMock.Object,
-                CancellationToken.None);
-
-            _httpContextMock.VerifyAll();
+            Assert.Equal(StatusCodes.Status200OK, result.StatusCode);
         }
     }
 }

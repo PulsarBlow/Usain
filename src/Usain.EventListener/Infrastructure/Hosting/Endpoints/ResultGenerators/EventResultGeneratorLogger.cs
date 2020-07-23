@@ -6,14 +6,14 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators
 
     internal static class EventResultGeneratorLogger
     {
-        private static readonly Action<ILogger, string, string, Exception?>
-            CommandFailed =
-                LoggerMessage.Define<string, string>(
+        private static readonly Action<ILogger, string, Exception?>
+            UnsuccessfulCommandResult =
+                LoggerMessage.Define<string>(
                     LogLevel.Warning,
                     new EventId(
                         0,
-                        nameof(CommandFailed)),
-                    "Command failed [Type={CommandType}, Id={CommandId}] - Returning 422 UnprocessableEntity.");
+                        nameof(UnsuccessfulCommandResult)),
+                    "Unsuccessful command result `{CommandResult}` - Generating 422 Unprocessable Entity.");
 
         private static readonly Action<ILogger, Exception?>
             UrlVerificationEventMissingChallenge =
@@ -22,17 +22,15 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators
                     new EventId(
                         0,
                         nameof(UrlVerificationEventMissingChallenge)),
-                    "UrlVerification event has no challenge. Bad request is returned.");
+                    "UrlVerification event has no challenge. Generating 400 Bad request.");
 
-        public static void LogCommandFailed(
+        public static void LogUnsuccessfulCommandResult(
             this ILogger logger,
-            ICommandResult commandResult)
+            CommandResult commandResult)
         {
-            CommandFailed(
+            UnsuccessfulCommandResult(
                 logger,
-                commandResult.GetType()
-                    .Name,
-                commandResult.CommandId.ToString(),
+                commandResult.ToString(),
                 null);
         }
 
