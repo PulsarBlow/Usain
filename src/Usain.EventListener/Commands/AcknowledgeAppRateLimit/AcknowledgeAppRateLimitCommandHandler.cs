@@ -13,7 +13,8 @@ namespace Usain.EventListener.Commands.AcknowledgeAppRateLimit
 
         public AcknowledgeAppRateLimitCommandHandler(
             ILogger<AcknowledgeAppRateLimitCommandHandler> logger)
-            => _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            => _logger =
+                logger ?? throw new ArgumentNullException(nameof(logger));
 
         public Task<CommandResult> Handle(
             AcknowledgeAppRateLimitCommand command,
@@ -27,12 +28,14 @@ namespace Usain.EventListener.Commands.AcknowledgeAppRateLimit
                 _logger.LogCommandCancelling(command.ToString());
                 return
                     Task.FromResult(
-                        new CommandResult(CommandResultType.Aborted));
+                        new CommandResult(
+                            command.Id,
+                            CommandResultType.Aborted));
             }
 
             _logger.LogCommandHandled(command.ToString());
 
-            return Task.FromResult(new CommandResult());
+            return Task.FromResult(new CommandResult(command.Id));
         }
     }
 }

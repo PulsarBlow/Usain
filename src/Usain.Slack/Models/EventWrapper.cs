@@ -1,6 +1,5 @@
 namespace Usain.Slack.Models
 {
-    using System;
     using System.Text.Json.Serialization;
     using CallbackEvents;
 
@@ -54,9 +53,6 @@ namespace Usain.Slack.Models
 
         [JsonPropertyName("event")]
         public CallbackEvent? Event { get; set; }
-
-        [JsonIgnore]
-        public Guid InternalId { get; set; } = Guid.NewGuid();
 
         public EventWrapper()
             : this(EventType)

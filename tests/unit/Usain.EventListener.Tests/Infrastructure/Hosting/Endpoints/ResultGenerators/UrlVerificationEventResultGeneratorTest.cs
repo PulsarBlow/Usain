@@ -64,6 +64,7 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.
                     Task.FromResult(
                         new VerifyUrlCommandResult(
                             challenge,
+                            Guid.NewGuid(),
                             commandResultType)));
             var generator = CreateGenerator();
 

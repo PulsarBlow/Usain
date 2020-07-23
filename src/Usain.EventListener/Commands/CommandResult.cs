@@ -10,10 +10,15 @@ namespace Usain.EventListener.Commands
         public bool IsSuccess
             => ResultType == CommandResultType.Success;
 
-        public CommandResult(CommandResultType resultType = CommandResultType.Success)
+        public CommandResult(
+            Guid commandId,
+            CommandResultType resultType = CommandResultType.Success)
         {
-            CommandId = Guid.NewGuid();
+            CommandId = commandId;
             ResultType = resultType;
         }
+
+        public override string ToString()
+            => $"{GetType().Name}:{CommandId}:{ResultType}";
     }
 }

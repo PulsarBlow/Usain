@@ -1,11 +1,11 @@
 namespace Usain.EventListener.Tests.Commands.IngestEvent
 {
-    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Core.Infrastructure;
     using EventListener.Commands;
     using EventListener.Commands.IngestEvent;
+    using EventListener.Infrastructure;
     using Microsoft.Extensions.Logging;
     using Moq;
     using Slack.Models;
@@ -30,7 +30,6 @@ namespace Usain.EventListener.Tests.Commands.IngestEvent
                 cancellationToken);
 
             Assert.Equal(CommandResultType.Aborted, actual.ResultType);
-            Assert.Equal(Guid.Empty, actual.EventStoreId);
         }
 
         [Fact]
@@ -52,9 +51,6 @@ namespace Usain.EventListener.Tests.Commands.IngestEvent
             Assert.Equal(
                 CommandResultType.Success,
                 actual.ResultType);
-            Assert.NotEqual(
-                Guid.Empty,
-                actual.EventStoreId);
         }
 
         private IngestEventCommandHandler CreateHandler()

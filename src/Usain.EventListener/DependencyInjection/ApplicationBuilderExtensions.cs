@@ -61,7 +61,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 && string.IsNullOrEmpty(options.SigningKey))
             {
                 throw new InvalidOperationException(
-                    $"Configure {options.SigningKey} in UsainServer options or deactivate Request Authentication");
+                    $"Configure {nameof(options.SigningKey)} in UsainServer options or deactivate Request Authentication");
             }
         }
     }

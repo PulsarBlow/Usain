@@ -3,12 +3,12 @@ namespace Usain.EventListener.Commands.IngestEvent
     using Slack.Models;
 
     internal class IngestEventCommand
-        : Command<IngestEventCommandResult>
+        : Command<CommandResult>
     {
         public EventWrapper Event { get; }
 
         public IngestEventCommand(
-            EventWrapper eventToStore)
-            => Event = eventToStore;
+            EventWrapper @event)
+            => Event = @event;
     }
 }

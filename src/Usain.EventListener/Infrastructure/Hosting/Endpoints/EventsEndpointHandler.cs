@@ -1,5 +1,6 @@
 namespace Usain.EventListener.Infrastructure.Hosting.Endpoints
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using Extensions;
@@ -24,14 +25,25 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints
 
         public EventsEndpointHandler(
             ILogger<EventsEndpointHandler> logger,
-            IEventsEndpointResultGenerator<UrlVerificationEvent> urlVerificationEventResultGenerator,
-            IEventsEndpointResultGenerator<AppRateLimitedEvent> appRateLimitedEventResultGenerator,
-            IEventsEndpointResultGenerator<EventWrapper> callbackEventResultGenerator)
+            IEventsEndpointResultGenerator<UrlVerificationEvent>
+                urlVerificationEventResultGenerator,
+            IEventsEndpointResultGenerator<AppRateLimitedEvent>
+                appRateLimitedEventResultGenerator,
+            IEventsEndpointResultGenerator<EventWrapper>
+                callbackEventResultGenerator)
         {
             _logger = logger;
-            _urlVerificationEventResultGenerator = urlVerificationEventResultGenerator;
-            _appRateLimitedEventResultGenerator = appRateLimitedEventResultGenerator;
-            _callbackEventResultGenerator = callbackEventResultGenerator;
+            _urlVerificationEventResultGenerator =
+                urlVerificationEventResultGenerator
+                ?? throw new ArgumentNullException(
+                    nameof(_urlVerificationEventResultGenerator));
+            _appRateLimitedEventResultGenerator =
+                appRateLimitedEventResultGenerator
+                ?? throw new ArgumentNullException(
+                    nameof(_appRateLimitedEventResultGenerator));
+            _callbackEventResultGenerator = callbackEventResultGenerator
+                ?? throw new ArgumentNullException(
+                    nameof(_callbackEventResultGenerator));
         }
 
         public async Task<IEndpointResult> ProcessAsync(
@@ -67,9 +79,10 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints
                 await _appRateLimitedEventResultGenerator.GenerateResult(
                     @event,
                     cancellationToken),
-                EventWrapper @event => await _callbackEventResultGenerator.GenerateResult(
-                    @event,
-                    cancellationToken),
+                EventWrapper @event => await _callbackEventResultGenerator
+                    .GenerateResult(
+                        @event,
+                        cancellationToken),
                 _ => new StatusCodeEndpointResult(
                     StatusCodes.Status422UnprocessableEntity),
             };
