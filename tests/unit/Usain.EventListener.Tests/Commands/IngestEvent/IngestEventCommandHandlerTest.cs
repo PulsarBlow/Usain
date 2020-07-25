@@ -5,7 +5,6 @@ namespace Usain.EventListener.Tests.Commands.IngestEvent
     using Core.Infrastructure;
     using EventListener.Commands;
     using EventListener.Commands.IngestEvent;
-    using EventListener.Infrastructure;
     using Microsoft.Extensions.Logging;
     using Moq;
     using Slack.Models;

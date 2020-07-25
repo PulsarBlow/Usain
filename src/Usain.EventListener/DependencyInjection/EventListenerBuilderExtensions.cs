@@ -10,7 +10,6 @@ namespace Microsoft.Extensions.DependencyInjection
     using Usain.Core.Infrastructure;
     using Usain.EventListener.Commands;
     using Usain.EventListener.Configuration;
-    using Usain.EventListener.Infrastructure;
     using Usain.EventListener.Infrastructure.Hosting.Endpoints;
     using Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators;
     using Usain.EventListener.Infrastructure.Hosting.Middlewares;

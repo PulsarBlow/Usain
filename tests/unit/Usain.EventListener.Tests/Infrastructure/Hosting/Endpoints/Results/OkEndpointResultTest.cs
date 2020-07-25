@@ -1,13 +1,9 @@
 namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.Results
 {
-    using System;
-    using System.IO;
-    using System.IO.Pipelines;
     using System.Threading;
     using System.Threading.Tasks;
     using EventListener.Extensions;
     using EventListener.Infrastructure.Hosting.Endpoints.Results;
-    using EventListener.Infrastructure.Hosting.Endpoints.Results.Responses;
     using Microsoft.AspNetCore.Http;
     using Moq;
     using Xunit;
