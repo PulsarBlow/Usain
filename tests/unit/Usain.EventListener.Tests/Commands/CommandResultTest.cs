@@ -2,7 +2,6 @@ namespace Usain.EventListener.Tests.Commands
 {
     using System;
     using EventListener.Commands;
-    using Microsoft.AspNetCore.Authorization.Infrastructure;
     using Xunit;
 
     public class CommandResultTest

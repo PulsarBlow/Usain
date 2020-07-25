@@ -4,7 +4,6 @@ namespace Usain.EventListener.Commands.IngestEvent
     using System.Threading;
     using System.Threading.Tasks;
     using Core.Infrastructure;
-    using Infrastructure;
     using Microsoft.Extensions.Logging;
     using Slack.Models;
 

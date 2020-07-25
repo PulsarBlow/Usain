@@ -1,7 +1,6 @@
 namespace Usain.EventListener.Tests.Commands
 {
     using System;
-    using System.ComponentModel.Design;
     using EventListener.Commands;
     using Xunit;
 

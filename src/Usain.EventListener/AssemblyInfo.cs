@@ -4,5 +4,7 @@ using System.Runtime.CompilerServices;
     InternalsVisibleTo(
         "Usain.EventListener.Tests")]
 [assembly:
+    InternalsVisibleTo("Usain.EventListener.Integration.Tests")]
+[assembly:
     InternalsVisibleTo(
         "DynamicProxyGenAssembly2")]
