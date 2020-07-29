@@ -7,7 +7,7 @@ namespace User.Slack.Tests.JsonConverters
     using System.Text.Json;
     using Usain.Slack.JsonConverters;
     using Usain.Slack.Models;
-    using Usain.Slack.Models.CallbackEvents;
+    using Usain.Slack.Models.Events.CallbackEvents;
     using Xunit;
 
     public class CallbackEventConverterTest
@@ -20,7 +20,7 @@ namespace User.Slack.Tests.JsonConverters
             typeof(EmptyTestObject),
             false)]
         [InlineData(
-            typeof(EventTimestamp),
+            typeof(Timestamp),
             false)]
         [InlineData(
             typeof(CallbackEvent),
@@ -95,10 +95,10 @@ namespace User.Slack.Tests.JsonConverters
                     Text = "text",
                     Type = AppMentionEvent.EventType,
                     User = "user",
-                    Timestamp = new EventTimestamp
-                        { Suffix = "006", Timestamp = 123456, },
-                    EventTimestamp = new EventTimestamp
-                        { Suffix = "006", Timestamp = 123456, },
+                    Timestamp = new Timestamp
+                        { Suffix = "006", Seconds = 123456, },
+                    EventTimestamp = new Timestamp
+                        { Suffix = "006", Seconds = 123456, },
                 },
                 "{\"user\":\"user\",\"text\":\"text\",\"ts\":\"123456.006\",\"channel\":\"channel\",\"type\":\"app_mention\",\"event_ts\":\"123456.006\"}",
             };
@@ -111,10 +111,10 @@ namespace User.Slack.Tests.JsonConverters
                     Text = "text",
                     Type = AppMentionEvent.EventType,
                     User = "user",
-                    Timestamp = new EventTimestamp
-                        { Suffix = "006", Timestamp = 123456, },
-                    EventTimestamp = new EventTimestamp
-                        { Suffix = "006", Timestamp = 123456, },
+                    Timestamp = new Timestamp
+                        { Suffix = "006", Seconds = 123456, },
+                    EventTimestamp = new Timestamp
+                        { Suffix = "006", Seconds = 123456, },
                 },
                 "{\"user\":\"user\",\"text\":\"text\",\"ts\":\"123456.006\",\"channel\":\"channel\",\"type\":\"app_mention\",\"event_ts\":\"123456.006\"}",
             };
@@ -124,8 +124,8 @@ namespace User.Slack.Tests.JsonConverters
                 new CallbackEvent
                 {
                     Type = "callback_event",
-                    EventTimestamp = new EventTimestamp
-                        { Suffix = "006", Timestamp = 123456 },
+                    EventTimestamp = new Timestamp
+                        { Suffix = "006", Seconds = 123456 },
                 },
                 "{\"type\":\"callback_event\",\"event_ts\":\"123456.006\"}",
             };

@@ -7,7 +7,7 @@ namespace User.Slack.Tests.JsonConverters
     using Usain.Slack.Models;
     using Xunit;
 
-    public class EventTimestampConverterTest
+    public class TimestampConverterTest
     {
         private const string JsonData = "{\"prop\":\"1591452219.000400\"}";
 
@@ -21,7 +21,7 @@ namespace User.Slack.Tests.JsonConverters
 
             Assert.Equal(
                 1591452219,
-                actual.Timestamp);
+                actual.Seconds);
             Assert.Equal(
                 "000400",
                 actual.Suffix);
@@ -56,10 +56,10 @@ namespace User.Slack.Tests.JsonConverters
         {
             using var stream = new MemoryStream();
             using var writer = new Utf8JsonWriter(stream);
-            var converter = new EventTimestampConverter();
+            var converter = new TimestampConverter();
             converter.Write(
                 writer,
-                new EventTimestamp() { Suffix = suffix, Timestamp = timestamp },
+                new Timestamp() { Suffix = suffix, Seconds = timestamp },
                 _options);
             writer.Flush();
 
@@ -70,7 +70,7 @@ namespace User.Slack.Tests.JsonConverters
                 actual);
         }
 
-        private EventTimestamp ExecuteRead(
+        private Timestamp ExecuteRead(
             string json,
             JsonTokenType tokenType = JsonTokenType.String)
         {
@@ -78,9 +78,9 @@ namespace User.Slack.Tests.JsonConverters
                 new Utf8JsonReader(Encoding.UTF8.GetBytes(json));
             while (reader.TokenType != tokenType) { reader.Read(); }
 
-            return new EventTimestampConverter().Read(
+            return new TimestampConverter().Read(
                 ref reader,
-                typeof(EventTimestamp), // This is not used, use anything
+                typeof(Timestamp), // This is not used, use anything
                 _options);
         }
     }

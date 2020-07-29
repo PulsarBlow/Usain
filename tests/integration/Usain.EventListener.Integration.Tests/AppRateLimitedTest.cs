@@ -7,8 +7,7 @@ namespace Usain.EventListener.Integration.Tests
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.TestHost;
     using Microsoft.Extensions.Hosting;
-    using Slack.Models;
-    using Snapper;
+    using Slack.Models.Events;
     using Xunit;
 
     public class AppRateLimitedTest

@@ -3,7 +3,7 @@ namespace Usain.Slack.JsonConverters
     using System;
     using System.Text.Json;
     using System.Text.Json.Serialization;
-    using Models;
+    using Models.Events;
 
     public class EventBaseConverter : JsonConverter<Event>
     {

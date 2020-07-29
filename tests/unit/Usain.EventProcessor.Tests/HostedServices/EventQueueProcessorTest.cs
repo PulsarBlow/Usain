@@ -7,8 +7,8 @@ namespace Usain.EventProcessor.Tests.HostedServices
     using EventProcessor.HostedServices;
     using Microsoft.Extensions.Logging;
     using Moq;
-    using Slack.Models;
-    using Slack.Models.CallbackEvents;
+    using Slack.Models.Events;
+    using Slack.Models.Events.CallbackEvents;
     using Xunit;
 
     public class EventQueueProcessorTest

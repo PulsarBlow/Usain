@@ -3,8 +3,8 @@ namespace Usain.EventProcessor.Tests.EventReactions
     using System;
     using EventProcessor.EventReactions;
     using Moq;
-    using Slack.Models;
-    using Slack.Models.CallbackEvents;
+    using Slack.Models.Events;
+    using Slack.Models.Events.CallbackEvents;
     using Xunit;
 
     public class EventReactionGeneratorTest

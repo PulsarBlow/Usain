@@ -8,7 +8,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators
     using Microsoft.Extensions.Logging;
     using Results;
     using Results.Responses;
-    using Slack.Models;
+    using Slack.Models.Events;
 
     internal class UrlVerificationEventResultGenerator
         : IEventsEndpointResultGenerator<UrlVerificationEvent>

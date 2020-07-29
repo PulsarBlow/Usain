@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
     using Usain.EventProcessor.Configuration;
     using Usain.EventProcessor.EventReactions;
     using Usain.EventProcessor.HostedServices;
-    using Usain.Slack.Models;
+    using Usain.Slack.Models.Events;
 
     public static class EventProcessorBuilderExtensions
     {

@@ -3,7 +3,7 @@ namespace Usain.Slack.JsonConverters
     using System;
     using System.Text.Json;
     using System.Text.Json.Serialization;
-    using Models.CallbackEvents;
+    using Models.Events.CallbackEvents;
 
     public class CallbackEventConverter : JsonConverter<CallbackEvent>
     {

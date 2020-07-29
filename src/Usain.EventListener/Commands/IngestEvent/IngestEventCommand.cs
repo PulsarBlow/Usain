@@ -1,6 +1,6 @@
 namespace Usain.EventListener.Commands.IngestEvent
 {
-    using Slack.Models;
+    using Slack.Models.Events;
 
     internal class IngestEventCommand
         : Command<CommandResult>

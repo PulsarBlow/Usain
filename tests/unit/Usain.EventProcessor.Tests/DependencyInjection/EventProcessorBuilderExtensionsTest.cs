@@ -10,7 +10,7 @@ namespace Usain.EventProcessor.Tests.DependencyInjection
     using Microsoft.Extensions.DependencyInjection.Extensions;
     using Microsoft.Extensions.Options;
     using Moq;
-    using Slack.Models;
+    using Slack.Models.Events;
     using Xunit;
 
     public class EventProcessorBuilderExtensionsTest

@@ -8,7 +8,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints
     using Microsoft.Extensions.Logging;
     using ResultGenerators;
     using Results;
-    using Slack.Models;
+    using Slack.Models.Events;
 
     internal class EventsEndpointHandler : IEndpointHandler
     {

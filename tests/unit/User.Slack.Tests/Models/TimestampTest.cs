@@ -3,7 +3,7 @@ namespace User.Slack.Tests.Models
     using Usain.Slack.Models;
     using Xunit;
 
-    public class EventTimestampTest
+    public class TimestampTest
     {
         public const long Timestamp = 1591452219;
         public const string Suffix = "0001";
@@ -26,9 +26,9 @@ namespace User.Slack.Tests.Models
             string suffix,
             bool expected)
         {
-            var eventTimestamp = new EventTimestamp
+            var eventTimestamp = new Timestamp
             {
-                Timestamp = timestamp,
+                Seconds = timestamp,
                 Suffix = suffix,
             };
             Assert.Equal(
@@ -39,10 +39,10 @@ namespace User.Slack.Tests.Models
         [Fact]
         public void Empty_Returns_Empty_Timestamp()
         {
-            var actual = EventTimestamp.Empty;
+            var actual = Usain.Slack.Models.Timestamp.Empty;
             Assert.Equal(
                 0,
-                actual.Timestamp);
+                actual.Seconds);
             Assert.Empty(actual.Suffix);
         }
 
@@ -64,9 +64,9 @@ namespace User.Slack.Tests.Models
             string suffix,
             bool areEqual)
         {
-            var expectedTs = new EventTimestamp
+            var expectedTs = new Timestamp
             {
-                Timestamp = Timestamp,
+                Seconds = Timestamp,
                 Suffix = Suffix,
             };
 
@@ -74,14 +74,14 @@ namespace User.Slack.Tests.Models
                 areEqual,
                 0
                 == expectedTs.CompareTo(
-                    new EventTimestamp
-                        { Timestamp = timestamp, Suffix = suffix }));
+                    new Timestamp
+                        { Seconds = timestamp, Suffix = suffix }));
         }
 
         [Fact]
         public void CompareTo_Equal_Self()
         {
-            var timestamp = new EventTimestamp();
+            var timestamp = new Timestamp();
             Assert.Equal(
                 0,
                 timestamp.CompareTo(timestamp));
@@ -92,7 +92,7 @@ namespace User.Slack.Tests.Models
         {
             Assert.NotEqual(
                 0,
-                new EventTimestamp().CompareTo(null));
+                new Timestamp().CompareTo(null));
         }
 
         [Theory]
@@ -103,7 +103,7 @@ namespace User.Slack.Tests.Models
             string value)
         {
             Assert.False(
-                EventTimestamp.TryParse(
+                Usain.Slack.Models.Timestamp.TryParse(
                     value,
                     out _));
         }
@@ -129,7 +129,7 @@ namespace User.Slack.Tests.Models
             string value,
             string expected)
         {
-            EventTimestamp.TryParse(
+            Usain.Slack.Models.Timestamp.TryParse(
                 value,
                 out var eventTimeStamp);
 

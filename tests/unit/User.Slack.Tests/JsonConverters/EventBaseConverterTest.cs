@@ -5,8 +5,8 @@ namespace User.Slack.Tests.JsonConverters
     using System.Text;
     using System.Text.Json;
     using Usain.Slack.JsonConverters;
-    using Usain.Slack.Models;
-    using Usain.Slack.Models.CallbackEvents;
+    using Usain.Slack.Models.Events;
+    using Usain.Slack.Models.Events.CallbackEvents;
     using Xunit;
 
     public class EventBaseConverterTest

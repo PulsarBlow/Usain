@@ -14,7 +14,7 @@ namespace Microsoft.Extensions.DependencyInjection
     using Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators;
     using Usain.EventListener.Infrastructure.Hosting.Middlewares;
     using Usain.EventListener.Infrastructure.Security;
-    using Usain.Slack.Models;
+    using Usain.Slack.Models.Events;
     using Usain.Slack.Security;
     using Endpoint =
         Usain.EventListener.Infrastructure.Hosting.Endpoints.Endpoint;

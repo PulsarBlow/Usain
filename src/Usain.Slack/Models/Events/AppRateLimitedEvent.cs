@@ -1,4 +1,4 @@
-namespace Usain.Slack.Models
+namespace Usain.Slack.Models.Events
 {
     using System.Text.Json.Serialization;
 

@@ -7,7 +7,7 @@ namespace Usain.EventListener.Tests.Commands.IngestEvent
     using EventListener.Commands.IngestEvent;
     using Microsoft.Extensions.Logging;
     using Moq;
-    using Slack.Models;
+    using Slack.Models.Events;
     using Xunit;
 
     public class IngestEventCommandHandlerTest

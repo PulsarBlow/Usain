@@ -1,4 +1,4 @@
-namespace Usain.Slack.Models.CallbackEvents
+namespace Usain.Slack.Models.Events.CallbackEvents
 {
     using System.Collections.Generic;
     using System.Text.Json.Serialization;
@@ -34,8 +34,8 @@ namespace Usain.Slack.Models.CallbackEvents
         /// When the event was dispatched
         /// </summary>
         [JsonPropertyName(EventTimestampPropertyName)]
-        public EventTimestamp EventTimestamp { get; set; } =
-            EventTimestamp.Empty;
+        public Timestamp EventTimestamp { get; set; } =
+            Timestamp.Empty;
 
         [JsonExtensionData]
         public Dictionary<string, object> OtherFields { get; set; } =
