@@ -5,9 +5,9 @@ namespace Usain.Slack.JsonConverters
     using System.Text.Json.Serialization;
     using Models;
 
-    public class EventTimestampConverter : JsonConverter<EventTimestamp>
+    public class TimestampConverter : JsonConverter<Timestamp>
     {
-        public override EventTimestamp Read(
+        public override Timestamp Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options)
@@ -17,13 +17,13 @@ namespace Usain.Slack.JsonConverters
                 throw new JsonException();
             }
 
-            EventTimestamp.TryParse(reader.GetString(), out var eventTimestamp);
+            Timestamp.TryParse(reader.GetString(), out var eventTimestamp);
             return eventTimestamp;
         }
 
         public override void Write(
             Utf8JsonWriter writer,
-            EventTimestamp value,
+            Timestamp value,
             JsonSerializerOptions options)
         {
             writer.WriteStringValue(value.ToString());

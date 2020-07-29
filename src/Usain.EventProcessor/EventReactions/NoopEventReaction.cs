@@ -2,8 +2,8 @@ namespace Usain.EventProcessor.EventReactions
 {
     using System.Threading.Tasks;
     using Microsoft.Extensions.Logging;
-    using Slack.Models;
-    using Slack.Models.CallbackEvents;
+    using Slack.Models.Events;
+    using Slack.Models.Events.CallbackEvents;
 
     internal class NoopEventReaction<TCallbackEvent>
         : IEventReaction<

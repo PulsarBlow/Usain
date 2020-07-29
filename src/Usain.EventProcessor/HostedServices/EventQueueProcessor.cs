@@ -6,7 +6,7 @@ namespace Usain.EventProcessor.HostedServices
     using Core.Infrastructure;
     using EventReactions;
     using Microsoft.Extensions.Logging;
-    using Slack.Models;
+    using Slack.Models.Events;
 
     internal class EventQueueProcessor : IEventQueueProcessor
     {

@@ -1,8 +1,8 @@
 namespace Usain.EventProcessor.EventReactions
 {
     using System;
-    using Slack.Models;
-    using Slack.Models.CallbackEvents;
+    using Slack.Models.Events;
+    using Slack.Models.Events.CallbackEvents;
 
     internal sealed class EventReactionGenerator
         : IEventReactionGenerator

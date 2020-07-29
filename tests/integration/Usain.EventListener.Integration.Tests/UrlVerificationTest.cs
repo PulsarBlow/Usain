@@ -7,7 +7,7 @@ namespace Usain.EventListener.Integration.Tests
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.TestHost;
     using Microsoft.Extensions.Hosting;
-    using Slack.Models;
+    using Slack.Models.Events;
     using Snapper;
     using Xunit;
 

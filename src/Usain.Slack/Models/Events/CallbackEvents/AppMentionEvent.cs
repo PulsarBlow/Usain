@@ -1,4 +1,4 @@
-namespace Usain.Slack.Models.CallbackEvents
+namespace Usain.Slack.Models.Events.CallbackEvents
 {
     using System.Text.Json.Serialization;
 
@@ -8,6 +8,7 @@ namespace Usain.Slack.Models.CallbackEvents
         internal const string TextJsonName = "text";
         internal const string TimestampJsonName = "ts";
         internal const string ChannelJsonName = "channel";
+
         public const string EventType = "app_mention";
 
         [JsonPropertyName(UserJsonName)]
@@ -17,7 +18,7 @@ namespace Usain.Slack.Models.CallbackEvents
         public string? Text { get; set; }
 
         [JsonPropertyName(TimestampJsonName)]
-        public EventTimestamp Timestamp { get; set; } = EventTimestamp.Empty;
+        public Timestamp Timestamp { get; set; } = Timestamp.Empty;
 
         [JsonPropertyName(ChannelJsonName)]
         public string? Channel { get; set; }

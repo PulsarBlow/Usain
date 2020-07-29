@@ -12,7 +12,7 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints.
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
     using Moq;
-    using Slack.Models;
+    using Slack.Models.Events;
     using Xunit;
 
     public class AppRateLimitedEventResultGeneratorTest

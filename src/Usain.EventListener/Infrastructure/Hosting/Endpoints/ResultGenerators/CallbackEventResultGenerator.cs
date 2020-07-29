@@ -7,7 +7,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints.ResultGenerators
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
     using Results;
-    using Slack.Models;
+    using Slack.Models.Events;
 
     internal class CallbackEventResultGenerator
         : IEventsEndpointResultGenerator<EventWrapper>

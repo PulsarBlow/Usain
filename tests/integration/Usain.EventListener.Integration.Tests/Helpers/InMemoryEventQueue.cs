@@ -4,7 +4,7 @@ namespace Usain.EventListener.Integration.Tests.Helpers
     using System.Threading;
     using System.Threading.Tasks;
     using Core.Infrastructure;
-    using Slack.Models;
+    using Slack.Models.Events;
 
     public class InMemoryEventQueue : IEventQueue<EventWrapper>
     {

@@ -5,7 +5,7 @@ namespace Usain.EventListener.Commands.IngestEvent
     using System.Threading.Tasks;
     using Core.Infrastructure;
     using Microsoft.Extensions.Logging;
-    using Slack.Models;
+    using Slack.Models.Events;
 
     internal class IngestEventCommandHandler
         : ICommandHandler<IngestEventCommand, CommandResult>

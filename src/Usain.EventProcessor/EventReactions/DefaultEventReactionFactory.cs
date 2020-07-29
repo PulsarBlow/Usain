@@ -2,8 +2,8 @@ namespace Usain.EventProcessor.EventReactions
 {
     using System;
     using Microsoft.Extensions.Logging;
-    using Slack.Models;
-    using Slack.Models.CallbackEvents;
+    using Slack.Models.Events;
+    using Slack.Models.Events.CallbackEvents;
 
     public class DefaultEventReactionFactory<TCallbackEvent>
         : IEventReactionFactory<TCallbackEvent>

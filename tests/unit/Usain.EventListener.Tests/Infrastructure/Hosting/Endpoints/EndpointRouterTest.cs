@@ -7,7 +7,7 @@ namespace Usain.EventListener.Tests.Infrastructure.Hosting.Endpoints
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
     using Moq;
-    using Slack.Models;
+    using Slack.Models.Events;
     using Xunit;
     using Endpoint = EventListener.Infrastructure.Hosting.Endpoints.Endpoint;
 
