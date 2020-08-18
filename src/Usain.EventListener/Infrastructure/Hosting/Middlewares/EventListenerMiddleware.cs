@@ -28,17 +28,17 @@ namespace Usain.EventListener.Infrastructure.Hosting.Middlewares
                 var endpointHandler = _endpointRouter.Find(context);
                 if (endpointHandler != null)
                 {
-                    _logger.LogUsainServerMiddlewareInvokingEndpointHandler(
+                    _logger.LogInvokingEndpointHandler(
                         endpointHandler
                             .GetType()
-                            .FullName
+                            .Name
                         ?? string.Empty,
                         context.Request.Path.ToString());
                     var result = await endpointHandler.ProcessAsync(context, context.RequestAborted);
 
-                    _logger.LogUsainServerMiddlewareInvokingEndpointResult(
+                    _logger.LogInvokingEndpointResult(
                         result.GetType()
-                            .FullName
+                            .Name
                         ?? string.Empty);
                     await result.ExecuteAsync(context, context.RequestAborted);
 
@@ -47,7 +47,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Middlewares
             }
             catch (Exception ex)
             {
-                _logger.LogUsainServerMiddlewareUnhandledException(ex);
+                _logger.LogUnhandledException(ex);
                 throw;
             }
 

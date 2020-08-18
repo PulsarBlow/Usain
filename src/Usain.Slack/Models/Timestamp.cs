@@ -5,7 +5,7 @@ namespace Usain.Slack.Models
     using JsonConverters;
 
     [JsonConverter(typeof(TimestampConverter))]
-    public class Timestamp : IComparable<Timestamp>
+    public class Timestamp : IEquatable<Timestamp>
     {
         public long Seconds { get; set; }
         public string Suffix { get; set; } = string.Empty;
@@ -66,24 +66,65 @@ namespace Usain.Slack.Models
             return true;
         }
 
-        public int CompareTo(
+        public bool Equals(
             Timestamp? other)
         {
             if (ReferenceEquals(
+                null,
+                other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(
                 this,
-                other)) return 0;
+                other))
+            {
+                return true;
+            }
+
+            return Seconds == other.Seconds
+                && Suffix == other.Suffix;
+        }
+
+        public override bool Equals(
+            object? obj)
+        {
             if (ReferenceEquals(
                 null,
-                other)) return 1;
+                obj))
+            {
+                return false;
+            }
 
-            var timestampComparison = Seconds.CompareTo(other.Seconds);
-            if (timestampComparison != 0) return timestampComparison;
+            if (ReferenceEquals(
+                this,
+                obj))
+            {
+                return true;
+            }
 
-            return string.Compare(
-                Suffix,
-                other.Suffix,
-                StringComparison.Ordinal);
+            return obj.GetType() == GetType() && Equals((Timestamp) obj);
         }
+
+        public override int GetHashCode()
+            => HashCode.Combine(
+                Seconds,
+                Suffix);
+
+        public static bool operator ==(
+            Timestamp? left,
+            Timestamp? right)
+            => Equals(
+                left,
+                right);
+
+        public static bool operator !=(
+            Timestamp? left,
+            Timestamp? right)
+            => !Equals(
+                left,
+                right);
 
         public override string ToString()
             => $"{Seconds}{(string.IsNullOrEmpty(Suffix) ? "" : ".")}{Suffix}";

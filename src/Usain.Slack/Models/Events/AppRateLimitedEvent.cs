@@ -12,18 +12,52 @@ namespace Usain.Slack.Models.Events
     /// </summary>
     public class AppRateLimitedEvent : Event
     {
-        public const string EventType = "app_rate_limited";
+        internal const string TokenJsonName = "token";
+        internal const string WorkspaceIdJsonName = "team_id";
+        internal const string ApplicationIdJsonName = "api_app_id";
+        internal const string MinuteRateLimitedJsonName = "minute_rate_limited";
 
-        [JsonPropertyName("token")]
+        /// <summary>
+        /// Event type value for the <see cref="AppRateLimitedEvent"/> event.
+        /// </summary>
+        public const string EventTypeValue = "app_rate_limited";
+
+        /// <summary>
+        /// This deprecated verification token is proof that the request
+        /// is coming from Slack on behalf of your application.
+        /// </summary>
+        /// <example>Jhj5dZrVaK7ZwHHjRyZWjbDl</example>
+        [JsonPropertyName(TokenJsonName)]
         public string? Token { get; set; }
 
-        [JsonPropertyName("team_id")]
-        public string? TeamId { get; set; }
+        /// <summary>
+        /// The unique identifier of the workspace where the event occurred
+        /// </summary>
+        /// <example>T014D2ARLD8</example>
+        [JsonPropertyName(WorkspaceIdJsonName)]
+        public string? WorkspaceId { get; set; }
 
-        [JsonPropertyName("api_app_id")]
-        public string? ApiAppId { get; set; }
+        /// <summary>
+        /// The unique identifier your installed Slack application.
+        /// Use this to distinguish which app the event belongs to if you
+        /// use multiple apps with the same Request URL.
+        /// </summary>
+        /// <example>A2H9RFS1A</example>
+        [JsonPropertyName(ApplicationIdJsonName)]
+        public string? ApplicationId { get; set; }
 
-        [JsonPropertyName("minute_rate_limited")]
+        /// <summary>
+        /// A rounded epoch time value indicating the minute your application
+        /// became rate limited for this workspace.
+        /// </summary>
+        /// <example>1518467820 is at 2018-02-12 20:37:00 UTC</example>
+        [JsonPropertyName(MinuteRateLimitedJsonName)]
         public long MinuteRateLimited { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AppRateLimitedEvent"/> class.
+        /// </summary>
+        public AppRateLimitedEvent()
+            => EventType = EventTypeValue;
     }
 }

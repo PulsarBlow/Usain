@@ -3,8 +3,8 @@ namespace Usain.Samples.Simple.UsainReactions
     using EventProcessor.EventReactions;
     using global::Slack.NetStandard;
     using Microsoft.Extensions.Logging;
-    using Slack.Models;
-    using Slack.Models.CallbackEvents;
+    using Slack.Models.Events;
+    using Slack.Models.Events.CallbackEvents;
 
     public class DefaultEventReactionFactory<TEvent>
         : IEventReactionFactory<TEvent>

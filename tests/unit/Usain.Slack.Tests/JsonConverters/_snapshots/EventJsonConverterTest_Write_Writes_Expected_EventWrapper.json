@@ -1,0 +1,10 @@
+{
+  "token": null,
+  "team_id": null,
+  "api_app_id": null,
+  "authed_users": null,
+  "event_id": null,
+  "event_time": null,
+  "event": null,
+  "type": "event_callback"
+}

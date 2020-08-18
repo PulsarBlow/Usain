@@ -21,7 +21,7 @@ namespace Usain.EventListener.Integration.Tests
             var client = host.GetTestClient();
 
             var content = new StringContent(
-                FakeBuilder.CreateEvent(UrlVerificationEvent.EventType));
+                FakeBuilder.CreateEvent(UrlVerificationEvent.EventTypeValue));
 
             var response = await client.PostAsync(
                 "/events",

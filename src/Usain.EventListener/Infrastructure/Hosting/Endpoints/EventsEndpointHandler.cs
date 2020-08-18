@@ -69,6 +69,8 @@ namespace Usain.EventListener.Infrastructure.Hosting.Endpoints
                     StatusCodes.Status422UnprocessableEntity);
             }
 
+            _logger.LogProcessingEventOfType(incomingEvent.EventType);
+
             return incomingEvent switch
             {
                 UrlVerificationEvent @event =>

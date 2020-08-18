@@ -8,40 +8,35 @@
 //------------------------------------------------------------------------------
 
 namespace Usain.EventListener {
-    using System.CodeDom.Compiler;
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
-    using System.Resources;
-    using System.Runtime.CompilerServices;
-
-    [GeneratedCode("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
-    [DebuggerNonUserCode()]
-    [CompilerGenerated()]
+    using System;
+    
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
         
-        private static ResourceManager resourceMan;
+        private static System.Resources.ResourceManager resourceMan;
         
-        private static CultureInfo resourceCulture;
+        private static System.Globalization.CultureInfo resourceCulture;
         
-        [SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         internal Resources() {
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static ResourceManager ResourceManager {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static System.Resources.ResourceManager ResourceManager {
             get {
-                if (Equals(null, resourceMan)) {
-                    ResourceManager temp = new ResourceManager("Usain.EventListener.Resources", typeof(Resources).Assembly);
+                if (object.Equals(null, resourceMan)) {
+                    System.Resources.ResourceManager temp = new System.Resources.ResourceManager("Usain.EventListener.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
         
-        [EditorBrowsable(EditorBrowsableState.Advanced)]
-        internal static CultureInfo Culture {
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        internal static System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }

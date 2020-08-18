@@ -29,7 +29,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Middlewares
                     nameof(UnhandledException)),
                 "Unhandled exception: {Message}");
 
-        public static void LogUsainServerMiddlewareInvokingEndpointHandler(
+        public static void LogInvokingEndpointHandler(
             this ILogger logger,
             string name,
             string url)
@@ -41,7 +41,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Middlewares
                 null);
         }
 
-        public static void LogUsainServerMiddlewareInvokingEndpointResult(
+        public static void LogInvokingEndpointResult(
             this ILogger logger,
             string name)
         {
@@ -51,7 +51,7 @@ namespace Usain.EventListener.Infrastructure.Hosting.Middlewares
                 null);
         }
 
-        public static void LogUsainServerMiddlewareUnhandledException(
+        public static void LogUnhandledException(
             this ILogger logger,
             Exception ex)
         {

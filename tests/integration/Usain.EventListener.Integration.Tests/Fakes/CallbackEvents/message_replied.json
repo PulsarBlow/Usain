@@ -1,0 +1,30 @@
+{
+  "client_msg_id": "cc93650a-5dfb-4a91-87df-b8a9d8b65e6f",
+  "type": "message",
+  "text": "this is a reply",
+  "user": "U0146A68TAS",
+  "ts": "1596574014.000100",
+  "team": "T014D2ARLD8",
+  "blocks": [
+    {
+      "type": "rich_text",
+      "block_id": "bcC=v",
+      "elements": [
+        {
+          "type": "rich_text_section",
+          "elements": [
+            {
+              "type": "text",
+              "text": "this is a reply"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "thread_ts": "1596490602.001200",
+  "parent_user_id": "U0146A68TAS",
+  "channel": "G015SS2E0D9",
+  "event_ts": "1596574014.000100",
+  "channel_type": "group"
+}

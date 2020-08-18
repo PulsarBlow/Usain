@@ -10,7 +10,7 @@ namespace Usain.Samples.Advanced.AzureQueue.Common
     using Core.Infrastructure;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
-    using Slack.Models;
+    using Slack.Models.Events;
 
     public class AzureQueueWrapper : IEventQueue<EventWrapper>
     {

@@ -1,0 +1,65 @@
+{
+  "type": "message",
+  "subtype": "message_changed",
+  "hidden": true,
+  "message": {
+    "client_msg_id": "11fa4f2c-89ac-4007-9886-4601559695a1",
+    "type": "message",
+    "text": "jkjkl ffkj",
+    "user": "U0146A68TAS",
+    "team": "T014D2ARLD8",
+    "edited": {
+      "user": "U0146A68TAS",
+      "ts": "1596057393.000000"
+    },
+    "blocks": [
+      {
+        "type": "rich_text",
+        "block_id": "RWM",
+        "elements": [
+          {
+            "type": "rich_text_section",
+            "elements": [
+              {
+                "type": "text",
+                "text": "jkjkl ffkj"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "ts": "1596057372.000200",
+    "source_team": "T014D2ARLD8",
+    "user_team": "T014D2ARLD8"
+  },
+  "channel": "G015SS2E0D9",
+  "previous_message": {
+    "client_msg_id": "11fa4f2c-89ac-4007-9886-4601559695a1",
+    "type": "message",
+    "text": "jkjkl",
+    "user": "U0146A68TAS",
+    "ts": "1596057372.000200",
+    "team": "T014D2ARLD8",
+    "blocks": [
+      {
+        "type": "rich_text",
+        "block_id": "lq5vs",
+        "elements": [
+          {
+            "type": "rich_text_section",
+            "elements": [
+              {
+                "type": "text",
+                "text": "jkjkl"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "event_ts": "1596057393.000300",
+  "ts": "1596057393.000300",
+  "channel_type": "group"
+}

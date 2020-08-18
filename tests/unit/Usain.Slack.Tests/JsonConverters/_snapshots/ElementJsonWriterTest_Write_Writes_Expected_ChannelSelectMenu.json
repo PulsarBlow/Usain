@@ -1,0 +1,33 @@
+{
+  "initial_channel": "channel_id",
+  "response_url_enabled": true,
+  "placeholder": {
+    "emoji": false,
+    "text": "text",
+    "type": "plain_text"
+  },
+  "confirm": {
+    "title": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "text": {
+      "text": "**text**",
+      "type": "mrkdwn"
+    },
+    "confirm": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "deny": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "style": "danger"
+  },
+  "action_id": "action_id",
+  "type": "channels_select"
+}

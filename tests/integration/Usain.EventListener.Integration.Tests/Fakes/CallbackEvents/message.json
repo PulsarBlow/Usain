@@ -1,0 +1,32 @@
+{
+  "client_msg_id": "95456930-6aae-4bfc-843c-c7092970527a",
+  "type": "message",
+  "text": "<@U015SRNU3HR> yo yo",
+  "user": "U0146A68TAS",
+  "ts": "1595881173.000600",
+  "team": "T014D2ARLD8",
+  "blocks": [
+    {
+      "type": "rich_text",
+      "block_id": "uU=tA",
+      "elements": [
+        {
+          "type": "rich_text_section",
+          "elements": [
+            {
+              "type": "user",
+              "user_id": "U015SRNU3HR"
+            },
+            {
+              "type": "text",
+              "text": " yo yo"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "channel": "G015SS2E0D9",
+  "event_ts": "1595881173.000600",
+  "channel_type": "group"
+}

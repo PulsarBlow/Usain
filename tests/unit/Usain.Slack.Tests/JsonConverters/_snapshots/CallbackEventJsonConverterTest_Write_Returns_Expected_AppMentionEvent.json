@@ -1,0 +1,9 @@
+{
+  "text": "text",
+  "ts": "123456.006",
+  "channel": "channel",
+  "user": "user",
+  "thread_ts": "0",
+  "type": "app_mention",
+  "event_ts": "123456.006"
+}

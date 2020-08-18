@@ -1,0 +1,35 @@
+{
+  "initial_users": [
+    "user_id"
+  ],
+  "placeholder": {
+    "emoji": false,
+    "text": "text",
+    "type": "plain_text"
+  },
+  "confirm": {
+    "title": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "text": {
+      "text": "**text**",
+      "type": "mrkdwn"
+    },
+    "confirm": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "deny": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "style": "danger"
+  },
+  "max_selected_items": 1,
+  "action_id": "action_id",
+  "type": "multi_users_select"
+}

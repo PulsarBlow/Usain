@@ -1,0 +1,21 @@
+{
+  "type": "message",
+  "subtype": "message_deleted",
+  "hidden": true,
+  "deleted_ts": "1596490898.001300",
+  "channel": "G015SS2E0D9",
+  "previous_message": {
+    "type": "message",
+    "subtype": "me_message",
+    "text": "dmdldmggggddd",
+    "user": "U0146A68TAS",
+    "ts": "1596490898.001300",
+    "edited": {
+      "user": "U0146A68TAS",
+      "ts": "1596490963.000000"
+    }
+  },
+  "event_ts": "1596491062.001600",
+  "ts": "1596491062.001600",
+  "channel_type": "group"
+}

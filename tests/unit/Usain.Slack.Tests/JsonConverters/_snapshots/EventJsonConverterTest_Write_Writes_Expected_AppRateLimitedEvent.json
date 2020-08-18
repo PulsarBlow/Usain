@@ -1,0 +1,7 @@
+{
+  "token": null,
+  "team_id": null,
+  "api_app_id": null,
+  "minute_rate_limited": 0,
+  "type": "app_rate_limited"
+}

@@ -1,0 +1,19 @@
+{
+  "message": {
+    "ts": "0",
+    "reply_count": 1,
+    "replies": [
+      {
+        "ts": "123456798.0002",
+        "type": "message",
+        "event_ts": "0"
+      }
+    ],
+    "type": "message",
+    "event_ts": "0"
+  },
+  "subtype": "message_replied",
+  "ts": "0",
+  "type": "message",
+  "event_ts": "0"
+}

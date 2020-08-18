@@ -25,7 +25,7 @@ namespace Usain.EventListener.Integration.Tests
 
             var content = new StringContent(
                 FakeBuilder.CreateCallbackEvent<AppMentionEvent>(
-                    AppMentionEvent.EventType));
+                    AppMentionEvent.CallbackEventTypeValue));
 
             var response = await client.PostAsync(
                 "/events",
