@@ -6,12 +6,13 @@ namespace Usain.Samples.Simple.UsainReactions
     using global::Slack.NetStandard.Messages.Blocks;
     using global::Slack.NetStandard.WebApi.Chat;
     using Microsoft.Extensions.Logging;
-    using Slack.Models;
-    using Slack.Models.CallbackEvents;
+    using Slack.Models.Events;
+    using Slack.Models.Events.CallbackEvents;
 
     public class AppMentionEventReaction : EventReaction<AppMentionEvent>
     {
-        private readonly string[] _greetings = {
+        private readonly string[] _greetings =
+        {
             "Hi <@{0}>! What's going on ?",
             "How's it going <@{0}> ?",
             "Good to see you <@{0}>, it's been a while !",
@@ -39,15 +40,18 @@ namespace Usain.Samples.Simple.UsainReactions
 
             var titleSection =
                 new Section(
-                    new MarkdownText(GetGreetings(appMentionEvent.User)));
+                    new MarkdownText(GetGreetings(appMentionEvent.UserId)));
 
             return new PostMessageRequest
             {
-                Channel = appMentionEvent.Channel,
+                Channel = appMentionEvent.ChannelId,
                 Blocks = new List<IMessageBlock>
                 {
                     titleSection,
                 },
+                ThreadId = appMentionEvent.ParentMessageId.IsEmpty
+                    ? appMentionEvent.MessageId.ToString()
+                    : appMentionEvent.ParentMessageId.ToString(),
             };
         }
 

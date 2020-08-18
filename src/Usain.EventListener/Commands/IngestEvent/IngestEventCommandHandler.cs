@@ -37,6 +37,7 @@ namespace Usain.EventListener.Commands.IngestEvent
             }
 
             var @event = command.Event;
+            _logger.LogIngestingEventOfType(@event.EventType);
             try
             {
                 await _eventQueue.EnqueueAsync(

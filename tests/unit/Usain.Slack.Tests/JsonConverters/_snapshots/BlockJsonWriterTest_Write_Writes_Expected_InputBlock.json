@@ -1,0 +1,15 @@
+{
+  "label": {
+    "emoji": false,
+    "text": "text",
+    "type": "plain_text"
+  },
+  "hint": {
+    "emoji": false,
+    "text": "text",
+    "type": "plain_text"
+  },
+  "optional": true,
+  "type": "input",
+  "block_id": null
+}

@@ -1,0 +1,32 @@
+{
+  "placeholder": {
+    "emoji": false,
+    "text": "text",
+    "type": "plain_text"
+  },
+  "initial_date": "2020-08-15",
+  "confirm": {
+    "title": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "text": {
+      "text": "**text**",
+      "type": "mrkdwn"
+    },
+    "confirm": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "deny": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "style": "danger"
+  },
+  "action_id": "action_id",
+  "type": "datepicker"
+}

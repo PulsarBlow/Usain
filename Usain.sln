@@ -32,7 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit", "unit", "{E8B5E0EE-0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Usain.Core.Tests", "tests\unit\Usain.Core.Tests\Usain.Core.Tests.csproj", "{7CFF2011-34DC-493D-BEB9-917183C01841}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Slack.Tests", "tests\unit\User.Slack.Tests\User.Slack.Tests.csproj", "{BF24BA96-D5B0-4B73-B03B-6B66B6612D61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Usain.Slack.Tests", "tests\unit\Usain.Slack.Tests\Usain.Slack.Tests.csproj", "{BF24BA96-D5B0-4B73-B03B-6B66B6612D61}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Usain.EventListener.Tests", "tests\unit\Usain.EventListener.Tests\Usain.EventListener.Tests.csproj", "{7A63BCA9-589B-4EDB-9721-AAEAFADF8668}"
 EndProject

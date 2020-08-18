@@ -1,0 +1,54 @@
+{
+  "options": [
+    {
+      "text": {
+        "text": "text",
+        "type": "plain_text"
+      },
+      "value": "value",
+      "description": {
+        "emoji": false,
+        "text": "text",
+        "type": "plain_text"
+      },
+      "url": "http://localhost/"
+    }
+  ],
+  "initial_option": {
+    "text": {
+      "text": "text",
+      "type": "plain_text"
+    },
+    "value": "value",
+    "description": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "url": "http://localhost/"
+  },
+  "confirm": {
+    "title": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "text": {
+      "text": "**text**",
+      "type": "mrkdwn"
+    },
+    "confirm": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "deny": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "style": "danger"
+  },
+  "action_id": "action_id",
+  "type": "radio_buttons"
+}

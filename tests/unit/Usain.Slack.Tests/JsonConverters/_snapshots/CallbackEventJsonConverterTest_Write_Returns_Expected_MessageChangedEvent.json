@@ -1,0 +1,14 @@
+{
+  "previous_message": {
+    "subtype": "me_message",
+    "text": "previousText",
+    "ts": "0",
+    "type": "message",
+    "event_ts": "0"
+  },
+  "subtype": "message_changed",
+  "text": "newText",
+  "ts": "0",
+  "type": "message",
+  "event_ts": "0"
+}

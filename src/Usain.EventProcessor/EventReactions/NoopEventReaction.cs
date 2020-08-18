@@ -27,7 +27,7 @@ namespace Usain.EventProcessor.EventReactions
 
         public Task ReactAsync()
         {
-            string eventType = _eventWrapper.Type ?? "unknown_type";
+            string eventType = _eventWrapper.EventType ?? "unknown_type";
             _logger.LogNoReaction(eventType);
             return Task.CompletedTask;
         }

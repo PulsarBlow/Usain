@@ -8,8 +8,8 @@ namespace Usain.Samples.Simple.UsainReactions
     using global::Slack.NetStandard.Messages.Blocks;
     using global::Slack.NetStandard.WebApi.Chat;
     using Microsoft.Extensions.Logging;
-    using Slack.Models;
-    using Slack.Models.CallbackEvents;
+    using Slack.Models.Events;
+    using Slack.Models.Events.CallbackEvents;
 
     public class EventReaction<TEvent> : IEventReaction<TEvent>
         where TEvent : CallbackEvent
@@ -34,9 +34,9 @@ namespace Usain.Samples.Simple.UsainReactions
 
         public async Task ReactAsync()
         {
-            if (EventWrapper.Event is IChannelEvent channelEvent)
+            if (EventWrapper.Event is AppMentionEvent appMentionEvent)
             {
-                var message = CreatePostMessageRequest(channelEvent);
+                var message = CreatePostMessageRequest(appMentionEvent);
                 await _apiClient.Chat.Post(message);
             }
 
@@ -47,7 +47,13 @@ namespace Usain.Samples.Simple.UsainReactions
         {
             Logger.LogInformation(
                 "Noop reaction for event `{EventType}`",
-                EventWrapper.Event?.Type);
+                EventWrapper.Event?.CallbackEventType);
+            if (EventWrapper.Event is MessageEvent messageEvent)
+            {
+                Logger.LogInformation(
+                    "Message event subtype is `{EventSubType}`",
+                    messageEvent.MessageSubType);
+            }
         }
 
         protected PostMessageRequest CreateDefaultMessage()
@@ -56,27 +62,25 @@ namespace Usain.Samples.Simple.UsainReactions
                 Text = "Usain Reaction : <null>",
             };
 
-        protected virtual PostMessageRequest CreatePostMessageRequest(IChannelEvent channelEvent)
+        protected virtual PostMessageRequest CreatePostMessageRequest(
+            IChannelEvent channelEvent)
         {
-            if (EventWrapper?.Event == null)
-            {
-                return CreateDefaultMessage();
-            }
+            if (EventWrapper?.Event == null) { return CreateDefaultMessage(); }
 
             var @event = EventWrapper.Event;
             var titleSection = new Section(new MarkdownText("Usain Reaction"))
             {
                 Fields = new List<TextObject>
                 {
-                    new MarkdownText($"*Type:*\n{@event.Type}"),
+                    new MarkdownText($"*Type:*\n{@event.CallbackEventType}"),
                     new MarkdownText(
-                        $"*When:*\n{DateTimeOffset.FromUnixTimeSeconds(@event.EventTimestamp.Timestamp)}"),
+                        $"*When:*\n{DateTimeOffset.FromUnixTimeSeconds(@event.EventTimestamp.Seconds)}"),
                 },
             };
 
             return new PostMessageRequest
             {
-                Channel = channelEvent.Channel,
+                Channel = channelEvent.ChannelId,
                 Blocks = new List<IMessageBlock>
                 {
                     titleSection,

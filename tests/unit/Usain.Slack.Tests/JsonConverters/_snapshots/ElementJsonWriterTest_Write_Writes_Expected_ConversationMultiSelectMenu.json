@@ -1,0 +1,44 @@
+{
+  "initial_conversations": [
+    "conversation_id"
+  ],
+  "default_current_conversation": true,
+  "filter": {
+    "include": [
+      "im",
+      "private"
+    ],
+    "exclude_external_shared_channels": true,
+    "exclude_bot_users": true
+  },
+  "placeholder": {
+    "emoji": false,
+    "text": "text",
+    "type": "plain_text"
+  },
+  "confirm": {
+    "title": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "text": {
+      "text": "**text**",
+      "type": "mrkdwn"
+    },
+    "confirm": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "deny": {
+      "emoji": false,
+      "text": "text",
+      "type": "plain_text"
+    },
+    "style": "danger"
+  },
+  "max_selected_items": 1,
+  "action_id": "action_id",
+  "type": "multi_conversations_select"
+}

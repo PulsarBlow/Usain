@@ -1,0 +1,35 @@
+{
+  "text": "text",
+  "ts": "123456.001",
+  "channel": "channelId",
+  "channel_type": "channelType",
+  "user": "userId",
+  "edited": {
+    "user": "user",
+    "ts": "123456.001"
+  },
+  "hidden": false,
+  "is_starred": true,
+  "pinned_to": [
+    "something"
+  ],
+  "thread_ts": "123456.000",
+  "parent_user_id": "parentUserId",
+  "blocks": [
+    {
+      "type": "unknown",
+      "block_id": null
+    }
+  ],
+  "reactions": [
+    {
+      "name": "astonished",
+      "count": 1,
+      "users": [
+        "user_id"
+      ]
+    }
+  ],
+  "type": "message",
+  "event_ts": "123456.001"
+}

@@ -1,0 +1,10 @@
+{
+  "type": "message",
+  "subtype": "me_message",
+  "text": "hi",
+  "user": "U0146A68TAS",
+  "ts": "1596486681.000700",
+  "channel": "G015SS2E0D9",
+  "event_ts": "1596486681.000700",
+  "channel_type": "group"
+}

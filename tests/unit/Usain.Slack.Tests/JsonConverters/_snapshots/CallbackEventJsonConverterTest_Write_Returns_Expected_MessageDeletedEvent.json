@@ -1,0 +1,7 @@
+{
+  "deleted_ts": "123456.006",
+  "subtype": "message_deleted",
+  "ts": "0",
+  "type": "message",
+  "event_ts": "0"
+}

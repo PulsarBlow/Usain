@@ -1,0 +1,11 @@
+{
+  "image_url": "http://localhost/",
+  "alt_text": "alt_text",
+  "title": {
+    "emoji": false,
+    "text": "text",
+    "type": "plain_text"
+  },
+  "type": "image",
+  "block_id": null
+}

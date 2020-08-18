@@ -20,7 +20,7 @@ namespace Usain.EventListener.Integration.Tests
             var client = host.GetTestClient();
 
             var content = new StringContent(
-                FakeBuilder.CreateEvent(AppRateLimitedEvent.EventType));
+                FakeBuilder.CreateEvent(AppRateLimitedEvent.EventTypeValue));
 
             var response = await client.PostAsync(
                 "/events",

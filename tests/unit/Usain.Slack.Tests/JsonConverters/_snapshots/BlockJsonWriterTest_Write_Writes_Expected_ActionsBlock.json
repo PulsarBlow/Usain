@@ -1,0 +1,14 @@
+{
+  "elements": [
+    {
+      "action_id": "action_id",
+      "type": "overflow"
+    },
+    {
+      "action_id": "action_id",
+      "type": "button"
+    }
+  ],
+  "type": "actions",
+  "block_id": "block_id"
+}

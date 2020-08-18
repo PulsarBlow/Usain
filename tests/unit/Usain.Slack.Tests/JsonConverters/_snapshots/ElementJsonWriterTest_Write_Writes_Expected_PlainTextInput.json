@@ -1,0 +1,13 @@
+{
+  "placeholder": {
+    "emoji": false,
+    "text": "text",
+    "type": "plain_text"
+  },
+  "initial_value": "value",
+  "multiline": true,
+  "min_length": 1,
+  "max_length": 2000,
+  "action_id": "action_id",
+  "type": "plain_text_input"
+}
