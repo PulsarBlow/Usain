@@ -52,7 +52,7 @@ jobs:
           path: .
       - name: Publish package
         run: |
-          dotnet nuget push *.nupkg --skip-duplicate
+          dotnet nuget push "*.nupkg" --skip-duplicate
 
   publish-to-nuget:
     name: Publish to NuGet
@@ -72,7 +72,7 @@ jobs:
           path: .
       - name: Publish package
         run: |
-          dotnet nuget push *.nupkg -k $NUGET_AUTH_TOKEN -sk $NUGET_AUTH_TOKEN --skip-duplicate -s https://api.nuget.org/v3/index.json
+          dotnet nuget push "*.nupkg" -k $NUGET_AUTH_TOKEN -sk $NUGET_AUTH_TOKEN --skip-duplicate -s https://api.nuget.org/v3/index.json
 
   create-github-release:
     name: Create Github release
