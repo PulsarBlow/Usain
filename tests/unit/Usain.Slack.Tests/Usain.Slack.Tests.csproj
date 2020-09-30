@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Import Project="../../../props/common.props" />
+  <Import Project="../../../props/common.props"/>
   <PropertyGroup>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(TestSdkVersion)" />
-    <PackageReference Include="xunit" Version="$(XUnitVersion)" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="$(XUnitRunnerVersion)" />
-    <PackageReference Include="coverlet.collector" Version="$(CoverletCollectorVersion)" />
-    <PackageReference Include="Snapper" Version="$(SnapperVersion)" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="$(TestSdkVersion)"/>
+    <PackageReference Include="xunit" Version="$(XUnitVersion)"/>
+    <PackageReference Include="xunit.runner.visualstudio" Version="$(XUnitRunnerVersion)"/>
+    <PackageReference Include="coverlet.msbuild" Version="$(CoverletMsBuildVersion)"/>
+    <PackageReference Include="Snapper" Version="$(SnapperVersion)"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Usain.Slack\Usain.Slack.csproj" />
+    <ProjectReference Include="..\..\..\src\Usain.Slack\Usain.Slack.csproj"/>
   </ItemGroup>
 
 </Project>

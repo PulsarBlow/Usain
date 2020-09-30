@@ -2,7 +2,7 @@
 
   <PropertyGroup Label="Package Versions">
     <MediatRVersion>8.1.0</MediatRVersion>
-    <CoverletCollectorVersion>1.3.0</CoverletCollectorVersion>
+    <CoverletMsBuildVersion>2.9.0</CoverletMsBuildVersion>
     <XUnitVersion>2.4.1</XUnitVersion>
     <XUnitRunnerVersion>2.4.3</XUnitRunnerVersion>
     <TestSdkVersion>16.7.0</TestSdkVersion>
