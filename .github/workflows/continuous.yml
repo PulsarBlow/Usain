@@ -20,3 +20,9 @@ jobs:
           dotnet-version: 3.1.401
       - name: Test release
         run: ./scripts/test-release.sh
+      - name: Publish coverage to Codacy
+        uses: codacy/codacy-coverage-reporter-action@master
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: .build/coverage/coverage.cobertura.xml # produced by the Test release step
+
