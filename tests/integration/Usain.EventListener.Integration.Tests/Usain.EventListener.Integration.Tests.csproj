@@ -11,7 +11,7 @@
     <PackageReference Include="Snapper" Version="$(SnapperVersion)"/>
     <PackageReference Include="xunit" Version="$(XUnitVersion)"/>
     <PackageReference Include="xunit.runner.visualstudio" Version="$(XUnitRunnerVersion)"/>
-    <PackageReference Include="coverlet.collector" Version="$(CoverletCollectorVersion)"/>
+    <PackageReference Include="coverlet.msbuild" Version="$(CoverletMsBuildVersion)"/>
   </ItemGroup>
 
   <ItemGroup>
