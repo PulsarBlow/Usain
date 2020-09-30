@@ -8,7 +8,7 @@
     <Title>Usain EventListener</Title>
     <PackageId>Usain.EventListener</PackageId>
     <PackageDescription>Slack events listener server for Usain</PackageDescription>
-    <PackageReleaseNotes>v0.0.0: Initial version</PackageReleaseNotes>
+    <PackageReleaseNotes>v0.1.0-alpha: Initial version</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,5 +39,5 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-  
+
 </Project>
