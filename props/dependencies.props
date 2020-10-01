@@ -12,6 +12,10 @@
     <MicrosoftExtensionsHostingVersion>3.1.5</MicrosoftExtensionsHostingVersion>
     <AzureStorageQueuesVersion>12.3.2</AzureStorageQueuesVersion>
     <SnapperVersion>2.2.4</SnapperVersion>
+    <UsainSlackVersion>0.1.0-alpha</UsainSlackVersion>
+    <UsainCoreVersion>0.1.0-alpha</UsainCoreVersion>
+    <UsainEventListenerVersion>0.1.0-alpha</UsainEventListenerVersion>
+    <UsainEventProcessorVersion>0.1.0-alpha</UsainEventProcessorVersion>
   </PropertyGroup>
 
 </Project>

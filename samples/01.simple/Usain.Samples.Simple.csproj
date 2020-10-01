@@ -5,9 +5,7 @@
   </PropertyGroup>
   <Import Project="../../props/common.props" />
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Usain.EventListener\Usain.EventListener.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Slack.NetStandard" Version="2.1.0" />
+    <PackageReference Include="Usain.EventListener" Version="$(UsainEventListenerVersion)"/>
   </ItemGroup>
 </Project>
