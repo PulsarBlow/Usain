@@ -9,8 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\Usain.Core\Usain.Core.csproj"/>
-    <ProjectReference Include="..\..\..\src\Usain.Slack\Usain.Slack.csproj"/>
+    <PackageReference Include="Usain.Slack" Version="$(UsainSlackVersion)"/>
+    <PackageReference Include="Usain.Core" Version="$(UsainCoreVersion)"/>
   </ItemGroup>
 
 </Project>
